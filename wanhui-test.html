@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>挽回成功率测评 | 专业情感挽回诊断</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#f7f4f0;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:0}
+.app{width:100%;max-width:480px;min-height:100vh;background:#fff;position:relative;overflow:hidden}
+
+/* Header */
+.header{background:linear-gradient(135deg,#c85c8e 0%,#9b3e6e 100%);padding:28px 24px 20px;text-align:center;position:relative}
+.header::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:24px;background:#fff;border-radius:24px 24px 0 0}
+.header-icon{width:56px;height:56px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:28px}
+.header h1{color:#fff;font-size:18px;font-weight:600;margin-bottom:6px}
+.header p{color:rgba(255,255,255,0.85);font-size:13px;line-height:1.5}
+
+/* Progress */
+.progress-wrap{padding:20px 24px 0}
+.progress-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.progress-label{font-size:12px;color:#999}
+.progress-count{font-size:13px;color:#c85c8e;font-weight:500}
+.progress-bar{height:6px;background:#f0e8ec;border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#c85c8e,#e8a0c0);border-radius:3px;transition:width 0.4s ease}
+
+/* Question card */
+.q-wrap{padding:16px 24px 0}
+.q-card{background:#fff;border-radius:16px;padding:20px;border:1px solid #f0e8ec;box-shadow:0 2px 12px rgba(200,92,142,0.08)}
+.q-num{display:inline-block;background:#fdf0f5;color:#c85c8e;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:12px}
+.q-text{font-size:15px;color:#1a1a1a;line-height:1.6;font-weight:500;margin-bottom:18px}
+.q-desc{font-size:12px;color:#999;margin-top:-12px;margin-bottom:14px;line-height:1.5}
+
+/* Options */
+.options{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;padding:13px 16px;border:1.5px solid #f0e4ea;border-radius:12px;cursor:pointer;transition:all 0.2s;background:#fff;position:relative}
+.opt:hover{border-color:#c85c8e;background:#fdf5f8}
+.opt.selected{border-color:#c85c8e;background:#fdf0f5}
+.opt.selected::after{content:'✓';position:absolute;right:16px;color:#c85c8e;font-weight:600;font-size:14px}
+.opt-dot{width:18px;height:18px;border-radius:50%;border:2px solid #ddd;margin-right:12px;flex-shrink:0;transition:all 0.2s;position:relative}
+.opt.selected .opt-dot{border-color:#c85c8e;background:#c85c8e}
+.opt.selected .opt-dot::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:6px;height:6px;background:#fff;border-radius:50%}
+.opt-text{font-size:14px;color:#333;line-height:1.4;flex:1}
+.opt-score{font-size:11px;color:#c8a0b0;margin-left:8px}
+
+/* Button */
+.btn-wrap{padding:20px 24px}
+.btn-next{width:100%;padding:16px;background:linear-gradient(135deg,#c85c8e,#9b3e6e);color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:600;cursor:pointer;transition:opacity 0.2s;letter-spacing:1px}
+.btn-next:disabled{opacity:0.4;cursor:not-allowed}
+.btn-next:not(:disabled):hover{opacity:0.9}
+
+/* Result page */
+.result-page{display:none;padding:0}
+.result-header{background:linear-gradient(135deg,#c85c8e 0%,#9b3e6e 100%);padding:32px 24px 80px;text-align:center}
+.result-header h2{color:#fff;font-size:17px;font-weight:600;margin-bottom:6px}
+.result-header p{color:rgba(255,255,255,0.8);font-size:13px}
+
+/* Score circle */
+.score-wrap{margin:-60px 24px 0;background:#fff;border-radius:20px;padding:28px 20px;box-shadow:0 4px 20px rgba(200,92,142,0.15);text-align:center}
+.score-ring{width:130px;height:130px;margin:0 auto 16px;position:relative}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring-bg{stroke:#f5e8ee;stroke-width:10;fill:none}
+.score-ring-fill{stroke-dasharray:327;stroke-dashoffset:327;stroke:#c85c8e;stroke-width:10;fill:none;stroke-linecap:round;transition:stroke-dashoffset 1.5s ease}
+.score-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.score-num{font-size:36px;font-weight:700;color:#c85c8e;line-height:1}
+.score-unit{font-size:14px;color:#999;margin-top:3px}
+.score-label{font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:6px}
+.score-sub{font-size:13px;color:#888;line-height:1.5}
+
+/* Level badge */
+.level-badge{display:inline-block;padding:5px 18px;border-radius:20px;font-size:13px;font-weight:600;margin:12px auto 0}
+.level-high{background:#e8f7ee;color:#2a8c52}
+.level-mid{background:#fff3e0;color:#e67e22}
+.level-low{background:#fdecea;color:#c0392b}
+
+/* Analysis */
+.analysis-wrap{margin:16px 16px 0;background:#fdf5f8;border-radius:16px;padding:20px}
+.analysis-title{font-size:14px;font-weight:600;color:#c85c8e;margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.analysis-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.analysis-item:last-child{margin-bottom:0}
+.a-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:1px}
+.a-good{background:#e8f7ee;color:#2a8c52}
+.a-bad{background:#fdecea;color:#c0392b}
+.a-text{font-size:13px;color:#444;line-height:1.6}
+.a-label{font-weight:600;color:#1a1a1a}
+
+/* Advice */
+.advice-wrap{margin:12px 16px 0;background:#fff;border:1px solid #f0e4ea;border-radius:16px;padding:20px}
+.advice-title{font-size:14px;font-weight:600;color:#333;margin-bottom:14px}
+.advice-steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;align-items:flex-start;gap:12px}
+.step-num{width:24px;height:24px;background:#c85c8e;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.step-text{font-size:13px;color:#444;line-height:1.6;flex:1;padding-top:2px}
+
+/* CTA */
+.cta-wrap{margin:16px 16px 0;background:linear-gradient(135deg,#c85c8e,#9b3e6e);border-radius:16px;padding:22px 20px;text-align:center}
+.cta-title{color:#fff;font-size:16px;font-weight:600;margin-bottom:8px}
+.cta-sub{color:rgba(255,255,255,0.85);font-size:13px;line-height:1.6;margin-bottom:18px}
+.cta-btn{display:block;background:#fff;color:#c85c8e;padding:14px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;letter-spacing:1px;cursor:pointer;border:none;width:100%}
+.cta-btn:hover{opacity:0.95}
+.cta-wechat{color:rgba(255,255,255,0.7);font-size:12px;margin-top:12px}
+
+/* Share card */
+.share-card-wrap{margin:16px 16px 0;display:none}
+.share-card{background:linear-gradient(135deg,#2d1b3d 0%,#4a2c5e 40%,#c85c8e 100%);border-radius:20px;padding:28px 20px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.share-card::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:rgba(255,255,255,0.06);border-radius:50%}
+.share-card::after{content:'';position:absolute;bottom:-30px;left:-30px;width:100px;height:100px;background:rgba(255,255,255,0.04);border-radius:50%}
+.share-card-header{position:relative;font-size:13px;opacity:0.85;margin-bottom:12px;letter-spacing:1px}
+.share-card-score{position:relative;font-size:56px;font-weight:700;line-height:1;margin-bottom:6px;text-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.share-card-level{position:relative;font-size:15px;font-weight:500;margin-bottom:16px}
+.share-card-quote{position:relative;font-size:13px;opacity:0.75;margin-bottom:16px;padding:12px 0;border-top:1px solid rgba(255,255,255,0.2);border-bottom:1px solid rgba(255,255,255,0.2)}
+.share-card-link{position:relative;font-size:12px;opacity:0.6;margin-bottom:12px}
+.share-card-brand{position:relative;font-size:12px;opacity:0.5}
+.share-btns{display:flex;gap:10px;margin-top:16px}
+.share-btn{flex:1;padding:14px 0;border-radius:12px;font-size:14px;font-weight:500;cursor:pointer;border:none;transition:transform 0.15s ease}
+.share-btn:active{transform:scale(0.97)}
+.share-save{background:#c85c8e;color:#fff}
+.share-copy{background:#fff;color:#c85c8e;border:1px solid #f0e0e8}
+
+/* Tags */
+.tag-wrap{margin:12px 16px 0;display:flex;flex-wrap:wrap;gap:8px}
+.tag{background:#fdf0f5;color:#c85c8e;font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid #f5d5e5}
+
+/* Footer */
+.footer{padding:20px 16px 32px;text-align:center}
+.footer p{font-size:11px;color:#bbb;line-height:1.8}
+
+/* Transition */
+.q-wrap,.btn-wrap,.progress-wrap{animation:fadeUp 0.3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* Loading */
+.loading-page{display:none;padding:60px 24px;text-align:center}
+.loading-dots{display:flex;justify-content:center;gap:8px;margin:24px 0 16px}
+.dot{width:10px;height:10px;border-radius:50%;background:#c85c8e;animation:bounce 1.2s infinite}
+.dot:nth-child(2){animation-delay:0.2s}
+.dot:nth-child(3){animation-delay:0.4s}
+@keyframes bounce{0%,80%,100%{transform:scale(0.6);opacity:0.4}40%{transform:scale(1);opacity:1}}
+.loading-text{font-size:14px;color:#888}
+.loading-tips{margin-top:20px;background:#fdf0f5;border-radius:12px;padding:16px;text-align:left}
+.loading-tips p{font-size:12px;color:#c85c8e;line-height:2;padding-left:8px}
+.loading-tips p::before{content:'→ ';color:#e8a0c0}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-icon">💌</div>
+    <h1>挽回成功率测评</h1>
+    <p>专业情感诊断 · 10道题 · 2分钟<br/>了解你们的真实挽回可能</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-info">
+      <span class="progress-label">答题进度</span>
+      <span class="progress-count" id="progressCount">1 / 10</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width:10%"></div>
+    </div>
+  </div>
+
+  <!-- Question -->
+  <div class="q-wrap" id="qWrap">
+    <div class="q-card">
+      <div class="q-num" id="qNum">第 1 题</div>
+      <div class="q-text" id="qText"></div>
+      <div class="q-desc" id="qDesc"></div>
+      <div class="options" id="options"></div>
+    </div>
+  </div>
+
+  <!-- Next button -->
+  <div class="btn-wrap" id="btnWrap">
+    <button class="btn-next" id="btnNext" disabled onclick="nextQ()">下一题 →</button>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading-page" id="loadingPage">
+    <div style="font-size:48px;margin-bottom:20px">🔍</div>
+    <div style="font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:4px">正在分析你们的情况</div>
+    <div style="font-size:13px;color:#999">基于1000+真实案例建模计算中…</div>
+    <div class="loading-dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="loading-text" id="loadingText">分析分手原因…</div>
+    <div class="loading-tips">
+      <p>大多数人在分手后越急越推远</p>
+      <p>第一步往往不是"联系"而是"稳定"</p>
+      <p>正确的顺序比速度更重要</p>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="result-page" id="resultPage">
+    <div class="result-header">
+      <h2>你的挽回诊断报告</h2>
+      <p>基于你的情况综合评估</p>
+    </div>
+
+    <div class="score-wrap">
+      <div class="score-ring">
+        <svg width="130" height="130" viewBox="0 0 130 130">
+          <circle class="score-ring-bg" cx="65" cy="65" r="52"/>
+          <circle class="score-ring-fill" id="ringFill" cx="65" cy="65" r="52"/>
+        </svg>
+        <div class="score-center">
+          <div class="score-num" id="scoreNum">0</div>
+          <div class="score-unit">%</div>
+        </div>
+      </div>
+      <div class="score-label" id="scoreLevelText"></div>
+      <div class="score-sub" id="scoreSubText"></div>
+      <div class="level-badge" id="levelBadge"></div>
+    </div>
+
+    <div class="analysis-wrap">
+      <div class="analysis-title">📊 关键因素分析</div>
+      <div id="analysisList"></div>
+    </div>
+
+    <div class="advice-wrap">
+      <div class="advice-title">🗺 接下来你该这样做</div>
+      <div class="advice-steps" id="adviceSteps"></div>
+    </div>
+
+    <div class="tag-wrap" id="tagWrap"></div>
+
+    <div class="share-card-wrap" id="shareCardWrap">
+      <div class="share-card" id="shareCard">
+        <div class="share-card-header">我的挽回成功率诊断</div>
+        <div class="share-card-score" id="shareScore">0%</div>
+        <div class="share-card-level" id="shareLevel"></div>
+        <div class="share-card-quote">你也来测测？2分钟出结果</div>
+        <div class="share-card-link">扫一扫或长按识别 →</div>
+        <div class="share-card-brand">铭松老师 · 情感挽回</div>
+      </div>
+      <div class="share-btns">
+        <button class="share-btn share-save" onclick="saveShareCard()">📸 保存分享卡</button>
+        <button class="share-btn share-copy" onclick="copyShareText()">📋 复制文案发小红书</button>
+      </div>
+    </div>
+
+    <div class="cta-wrap">
+      <div class="cta-title">想知道你的专属挽回方案？</div>
+      <div class="cta-sub">测评只是开始，每段关系的破裂原因不同<br/>需要针对你具体情况制定专属策略</div>
+      <button class="cta-btn" onclick="openAIChat()" style="margin-bottom:10px">💬 和铭松老师直接聊（AI即时回复）</button>
+      <button class="cta-btn" onclick="goCTA()" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.5)">加微信 · 深度1对1咨询</button>
+      <div class="cta-wechat">微信：fccj20180520 · 限量每日接待10人</div>
+    </div>
+
+    <div class="footer">
+      <p>本测评结果仅供参考，不构成任何保证<br/>每段感情都值得被认真对待</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    text: "你们分手多长时间了？",
+    desc: "时间越短，情感记忆越新鲜，挽回窗口期越大",
+    opts: [
+      {text:"不到1个月", score:25},
+      {text:"1～3个月", score:20},
+      {text:"3～6个月", score:12},
+      {text:"6个月以上", score:5}
+    ]
+  },
+  {
+    text: "分手的主要原因是什么？",
+    desc: "不同原因对应完全不同的挽回策略",
+    opts: [
+      {text:"争吵/沟通问题", score:22},
+      {text:"异地/现实因素", score:20},
+      {text:"对方出轨/第三者", score:10},
+      {text:"对方说感情淡了/不爱了", score:15},
+      {text:"我方过错（出轨/欺骗）", score:6}
+    ]
+  },
+  {
+    text: "分手后你们还有联系吗？",
+    desc: "保持一定联系是挽回的重要信号",
+    opts: [
+      {text:"正常聊天，偶尔见面", score:25},
+      {text:"偶尔发消息，会回复", score:20},
+      {text:"极少联系，但不拒绝", score:12},
+      {text:"拉黑/屏蔽，完全不联系", score:5}
+    ]
+  },
+  {
+    text: "对方分手后的态度是？",
+    desc: "分手时的情绪状态反映了对方内心的真实感受",
+    opts: [
+      {text:"依然关心我、有联系", score:25},
+      {text:"提过分手但后悔过，态度摇摆", score:22},
+      {text:"态度坚决，但没有恨意", score:12},
+      {text:"非常冷漠/彻底断联", score:5}
+    ]
+  },
+  {
+    text: "你们在一起多久？",
+    desc: "在一起时间越长，感情基础越深，挽回成本越高但成功后更稳固",
+    opts: [
+      {text:"3年以上", score:22},
+      {text:"1～3年", score:25},
+      {text:"6个月～1年", score:18},
+      {text:"不到6个月", score:10}
+    ]
+  },
+  {
+    text: "分手后你有没有做过这些行为？",
+    desc: "分手后的行为会直接影响对方对你的评价",
+    opts: [
+      {text:"冷静处理，没有过激行为", score:25},
+      {text:"哭诉/求复合，但已停止", score:16},
+      {text:"多次发大量消息/打电话", score:8},
+      {text:"去找对方大闹/威胁/纠缠", score:2}
+    ]
+  },
+  {
+    text: "你认为这段感情破裂的核心是？",
+    desc: "清醒认知是有效挽回的前提",
+    opts: [
+      {text:"双方都有问题，我承认自己的责任", score:25},
+      {text:"主要是沟通方式不对", score:22},
+      {text:"外部因素为主（距离/工作/家人）", score:20},
+      {text:"对方问题为主", score:8}
+    ]
+  },
+  {
+    text: "你现在的状态如何？",
+    desc: "内在状态是挽回的最大变量，对方感受得到你的变化",
+    opts: [
+      {text:"基本恢复，有清晰计划", score:25},
+      {text:"有些难过，但在积极调整", score:18},
+      {text:"情绪不稳定，时好时坏", score:10},
+      {text:"崩溃状态，无法正常生活", score:3}
+    ]
+  },
+  {
+    text: "对方身边有没有新的感情介入？",
+    desc: "第三者是挽回的最大障碍，但不代表没有机会",
+    opts: [
+      {text:"没有，单身状态", score:25},
+      {text:"有暧昧对象但未确认关系", score:15},
+      {text:"已经在交往新的人", score:8},
+      {text:"不清楚，不了解对方状态", score:12}
+    ]
+  },
+  {
+    text: "如果有专业老师指导，你愿意配合执行方案吗？",
+    desc: "执行力是挽回成功率的放大器",
+    opts: [
+      {text:"完全愿意，我会严格执行", score:25},
+      {text:"愿意，但可能需要鼓励", score:20},
+      {text:"会尽力，但自控力一般", score:12},
+      {text:"不太确定，先了解一下", score:8}
+    ]
+  }
+];
+
+let current = 0;
+let scores = [];
+let selectedIdx = -1;
+
+function initQ(){
+  const q = questions[current];
+  document.getElementById('qNum').textContent = '第 ' + (current+1) + ' 题';
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('qDesc').textContent = q.desc;
+  document.getElementById('progressCount').textContent = (current+1) + ' / ' + questions.length;
+  document.getElementById('progressFill').style.width = ((current+1)/questions.length*100) + '%';
+  
+  const btn = document.getElementById('btnNext');
+  btn.textContent = current === questions.length-1 ? '查看我的结果 ✨' : '下一题 →';
+  btn.disabled = true;
+  selectedIdx = -1;
+
+  const optWrap = document.getElementById('options');
+  optWrap.innerHTML = '';
+  q.opts.forEach((o,i)=>{
+    const div = document.createElement('div');
+    div.className = 'opt';
+    div.innerHTML = '<div class="opt-dot"></div><div class="opt-text">'+o.text+'</div>';
+    div.onclick = ()=>selectOpt(i);
+    optWrap.appendChild(div);
+  });
+}
+
+function selectOpt(i){
+  selectedIdx = i;
+  document.querySelectorAll('.opt').forEach((el,idx)=>{
+    el.classList.toggle('selected', idx===i);
+  });
+  document.getElementById('btnNext').disabled = false;
+}
+
+function nextQ(){
+  if(selectedIdx<0) return;
+  scores.push(questions[current].opts[selectedIdx].score);
+  if(current < questions.length-1){
+    current++;
+    const qWrap = document.getElementById('qWrap');
+    qWrap.style.animation='none';
+    void qWrap.offsetWidth;
+    qWrap.style.animation='fadeUp 0.3s ease';
+    initQ();
+  } else {
+    showLoading();
+  }
+}
+
+function showLoading(){
+  document.getElementById('progressWrap').style.display='none';
+  document.getElementById('qWrap').style.display='none';
+  document.getElementById('btnWrap').style.display='none';
+  document.getElementById('loadingPage').style.display='block';
+
+  const tips = ['分析分手原因…','评估情感基础…','计算联系频率…','判断挽回窗口期…','生成专属报告…'];
+  let ti = 0;
+  const iv = setInterval(()=>{
+    document.getElementById('loadingText').textContent = tips[ti%tips.length];
+    ti++;
+  }, 600);
+
+  setTimeout(()=>{
+    clearInterval(iv);
+    showResult();
+  }, 3200);
+}
+
+function showResult(){
+  const total = scores.reduce((a,b)=>a+b,0);
+  const maxPossible = 25*10;
+  const pct = Math.round((total/maxPossible)*100);
+
+  document.getElementById('loadingPage').style.display='none';
+  document.getElementById('resultPage').style.display='block';
+
+  // Animate score
+  animateScore(pct);
+
+  // Level
+  let levelText, levelSub, levelClass, levelBadge;
+  if(pct>=70){
+    levelText = '胜算较大';
+    levelSub = '你们的情况有很强的挽回基础，把握好节奏成功率相当高';
+    levelClass = 'level-high';
+    levelBadge = '✅ 高可能区间';
+  } else if(pct>=45){
+    levelText = '有一定机会';
+    levelSub = '需要专业策略和耐心，避免常见错误，机会是存在的';
+    levelClass = 'level-mid';
+    levelBadge = '⚠️ 中等可能区间';
+  } else {
+    levelText = '挑战较大';
+    levelSub = '目前难度较高，但不代表没有可能——专业介入往往能突破瓶颈';
+    levelClass = 'level-low';
+    levelBadge = '🔴 需要专业协助';
+  }
+  document.getElementById('scoreLevelText').textContent = levelText;
+  document.getElementById('scoreSubText').textContent = levelSub;
+  const badge = document.getElementById('levelBadge');
+  badge.textContent = levelBadge;
+  badge.className = 'level-badge ' + levelClass;
+
+  // Analysis
+  buildAnalysis(scores);
+  buildAdvice(pct, scores);
+  buildTags(scores);
+
+  // Share card
+  buildShareCard(pct, levelText);
+}
+
+// Store for copy
+let _sharePct = 0;
+let _shareLevel = '';
+
+function buildShareCard(pct, level){
+  _sharePct = pct;
+  _shareLevel = level;
+  document.getElementById('shareScore').textContent = pct + '%';
+  document.getElementById('shareLevel').textContent = '挽回可能：' + level;
+  document.getElementById('shareCardWrap').style.display = 'block';
+}
+
+function saveShareCard(){
+  const card = document.getElementById('shareCard');
+  const rect = card.getBoundingClientRect();
+  const canvas = document.createElement('canvas');
+  const scale = 2;
+  canvas.width = rect.width * scale;
+  canvas.height = rect.height * scale;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(scale, scale);
+
+  // Draw gradient bg
+  const grad = ctx.createLinearGradient(0, 0, rect.width, rect.height);
+  grad.addColorStop(0, '#2d1b3d');
+  grad.addColorStop(0.4, '#4a2c5e');
+  grad.addColorStop(1, '#c85c8e');
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  const r=20,w=rect.width,h=rect.height;
+  ctx.moveTo(r,0); ctx.lineTo(w-r,0); ctx.arcTo(w,0,w,r,r);
+  ctx.lineTo(w,h-r); ctx.arcTo(w,h,w-r,h,r);
+  ctx.lineTo(r,h); ctx.arcTo(0,h,0,h-r,r);
+  ctx.lineTo(0,r); ctx.arcTo(0,0,r,0,r);
+  ctx.fill();
+
+  // Decorative circles
+  ctx.fillStyle = 'rgba(255,255,255,0.06)';
+  ctx.beginPath(); ctx.arc(rect.width+40, -40, 120, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,0.04)';
+  ctx.beginPath(); ctx.arc(-30, rect.height+30, 100, 0, Math.PI*2); ctx.fill();
+
+  // Text
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.font = '13px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('我的挽回成功率诊断', rect.width/2, 40);
+
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 56px sans-serif';
+  ctx.shadowColor = 'rgba(0,0,0,0.2)';
+  ctx.shadowBlur = 8;
+  ctx.fillText(_sharePct+'%', rect.width/2, 110);
+  ctx.shadowBlur = 0;
+
+  ctx.fillStyle = '#fff';
+  ctx.font = '500 15px sans-serif';
+  ctx.fillText('挽回可能：'+_shareLevel, rect.width/2, 142);
+
+  // Divider lines + quote
+  ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(40, 160); ctx.lineTo(rect.width-40, 160); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(40, 190); ctx.lineTo(rect.width-40, 190); ctx.stroke();
+
+  ctx.fillStyle = 'rgba(255,255,255,0.75)';
+  ctx.font = '13px sans-serif';
+  ctx.fillText('你也来测测？2分钟出结果', rect.width/2, 180);
+
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.font = '12px sans-serif';
+  ctx.fillText('铭松老师 · 情感挽回', rect.width/2, 215);
+
+  // Download
+  canvas.toBlob(blob => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '挽回成功率测评_'+_sharePct+'%.png';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+}
+
+function copyShareText(){
+  const text = '刚测了我的挽回成功率，结果是'+_sharePct+'%（'+_shareLevel+'）\n\n你也来测一个？2分钟出结果，免费的 👇\nhttps://02825461d48a4a08bf8fe201580cd5ce.app.codebuddy.work\n\n#分手挽回 #复合 #情感测评';
+  navigator.clipboard.writeText(text).then(()=>{
+    alert('已复制！打开小红书/朋友圈直接粘贴发布即可 📋');
+  }).catch(()=>{
+    prompt('请手动复制以下文案：', text);
+  });
+}
+
+function animateScore(target){
+  const ring = document.getElementById('ringFill');
+  const numEl = document.getElementById('scoreNum');
+  const circumference = 327;
+  let cur = 0;
+  const step = target/60;
+  const iv = setInterval(()=>{
+    cur = Math.min(cur+step, target);
+    numEl.textContent = Math.round(cur);
+    ring.style.strokeDashoffset = circumference - (circumference*(cur/100));
+    if(cur>=target) clearInterval(iv);
+  }, 25);
+}
+
+function buildAnalysis(sc){
+  const items = [
+    {good: sc[0]>=20, good_text:'分手时间较短，感情记忆仍新鲜', bad_text:'分手时间较长，需要重新建立联系'},
+    {good: sc[2]>=18, good_text:'仍保持联系，沟通渠道没有完全关闭', bad_text:'断联状态，需要先解除屏蔽再谈挽回'},
+    {good: sc[5]>=20, good_text:'分手后行为克制，没有破坏感情空间', bad_text:'分手后有过激行为，需要先修复形象'},
+    {good: sc[7]>=18, good_text:'个人状态良好，有吸引力基础', bad_text:'情绪状态较差，先调整自己才能吸引对方'},
+    {good: sc[8]>=20, good_text:'对方暂无新感情，竞争压力小', bad_text:'对方已有新感情，挽回难度上升'},
+  ];
+  const wrap = document.getElementById('analysisList');
+  items.forEach(item=>{
+    const div = document.createElement('div');
+    div.className = 'analysis-item';
+    div.innerHTML = '<div class="a-icon '+(item.good?'a-good':'a-bad')+'">'+(item.good?'✓':'!')+'</div><div class="a-text">'+(item.good?item.good_text:item.bad_text)+'</div>';
+    wrap.appendChild(div);
+  });
+}
+
+function buildAdvice(pct, sc){
+  let steps;
+  if(pct>=70){
+    steps=[
+      '控制联系频率，保持若即若离的状态，不要表现得太迫切',
+      '找一个自然的理由重新开启话题，切忌直接谈复合',
+      '制造高质量见面机会，让对方重新感受到你的价值',
+      '等时机成熟再表达感情，一次到位胜过多次试探'
+    ];
+  } else if(pct>=45){
+    steps=[
+      '先暂停所有主动联系，给彼此情绪降温的空间（建议21天）',
+      '利用这段时间快速提升自我，外在形象和内在状态都要改变',
+      '通过共同好友或特定节点重新建立联系，不要直接开口挽回',
+      '强烈建议找专业老师制定个性化策略，避免反复试错消耗机会'
+    ];
+  } else {
+    steps=[
+      '停止一切会让对方反感的行为，先止损比挽回更重要',
+      '给自己至少1个月的彻底冷静期，修复自己的状态',
+      '这种情况单靠自己很难突破，需要专业老师帮你分析对方心理',
+      '从改变彼此的互动模式入手，而不是直接谈复合'
+    ];
+  }
+  const wrap = document.getElementById('adviceSteps');
+  steps.forEach((s,i)=>{
+    const div = document.createElement('div');
+    div.className = 'step';
+    div.innerHTML = '<div class="step-num">'+(i+1)+'</div><div class="step-text">'+s+'</div>';
+    wrap.appendChild(div);
+  });
+}
+
+function buildTags(sc){
+  const all = ['需要冷静期','建立吸引力','修复信任','重塑形象','情绪管理','重建联系','制造见面','专属策略'];
+  const selected = all.sort(()=>Math.random()-0.5).slice(0,5);
+  const wrap = document.getElementById('tagWrap');
+  selected.forEach(t=>{
+    const s = document.createElement('span');
+    s.className='tag';
+    s.textContent = t;
+    wrap.appendChild(s);
+  });
+}
+
+function openAIChat(){
+  window.open('https://qhr4fdfgk4.coze.site', '_blank');
+}
+
+function goCTA(){
+  alert('长按保存微信号：fccj20180520\n\n添加后告知「测评」可优先安排\n每日限量接待，先到先得');
+}
+
+initQ();
+</script>
+</body>
+</html>
