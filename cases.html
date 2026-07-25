@@ -43,6 +43,26 @@ footer{text-align:center;padding:32px 20px;color:#999;font-size:13px;border-top:
 footer .contact-line{color:#c85c8e;font-size:15px;font-weight:600;margin-bottom:6px}
 footer p{margin-bottom:4px}
 .note{text-align:center;color:#aaa;font-size:13px;margin:8px 0 32px}
+/* 统一联系方式组件 */
+.contact-box{background:linear-gradient(135deg,#fdf3f8,#fff);border:2px solid #f0d4e3;border-radius:16px;padding:28px 24px;text-align:center;margin:32px auto;max-width:560px}
+.contact-title{font-size:18px;font-weight:700;color:#9b3e6e;margin-bottom:18px;line-height:1.5}
+.contact-qrcode img{width:160px;height:160px;border-radius:10px;margin-bottom:14px}
+.contact-id{font-size:20px;font-weight:700;color:#c85c8e;margin-bottom:12px;letter-spacing:1px}
+.contact-copy{background:#c85c8e;color:#fff;border:none;padding:10px 24px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:12px}
+.contact-copy:active{background:#a33d6e}
+.contact-copy.copied{background:#2e7d32}
+.contact-note{font-size:13px;color:#888;max-width:420px;margin:0 auto;line-height:1.7}
+.contact-inline{display:inline-flex;align-items:center;gap:8px;background:#fdf3f8;padding:6px 14px;border-radius:8px;border:1px solid #f0d4e3;color:#9b3e6e;font-weight:600;font-size:15px}
+.hero-cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:20px}
+.hero-cta .contact-id{font-size:24px;margin:0}
+.hero-cta .contact-qrcode img{width:180px;height:180px}
+.hero-cta .cta-note{font-size:13px;color:#999}
+footer .contact-box{background:#fff;border:1px solid #f0d4e3;padding:20px;margin:0 auto 20px;max-width:400px}
+footer .contact-title{font-size:15px;margin-bottom:12px}
+footer .contact-qrcode img{width:120px;height:120px}
+footer .contact-id{font-size:17px}
+footer .contact-note{font-size:12px}
+
 </style>
 <script type="application/ld+json">
 {
@@ -159,15 +179,25 @@ footer p{margin-bottom:4px}
   <div class="case-result">三个月之内，我们再也没有因为老问题吵过架。老师说，很多关系不是因为不爱了才分手的，是因为两个人都不知道对方在想什么。我深有体会。</div>
 </div>
 
-<div class="cta">
-  <h3>每个人的情况都不一样</h3>
-  <p>如果你也想有人帮你看看你现在的处境，可以联系我。<br>第一次不谈钱，先聊聊你遇到了什么事。</p>
-  <a href="about.html">告诉我你的情况 →</a>
+<div class="contact-box" id="contact">
+  <div class="contact-title">如果你也想有人帮你看看处境，加我微信</div>
+  <div class="contact-qrcode"><img src="images/wechat-qrcode.png" alt="铭松老师微信二维码" width="160" height="160" loading="lazy"></div>
+  <div class="contact-id">微信：fccj20180520</div>
+  <button class="contact-copy" onclick="copyWechat()">复制微信号</button>
+  <div class="contact-note">第一次聊聊不收费，不催你决定。有些情况其实不用找老师。</div>
 </div>
 
 </main>
 
 <footer>
+<div class="contact-box" id="contact">
+  <div class="contact-title">想具体聊聊？直接加我微信</div>
+  <div class="contact-qrcode"><img src="images/wechat-qrcode.png" alt="铭松老师微信二维码" width="160" height="160" loading="lazy"></div>
+  <div class="contact-id">微信：fccj20180520</div>
+  <button class="contact-copy" onclick="copyWechat()">复制微信号</button>
+  <div class="contact-note">第一次聊聊不收费，不催你决定。有些情况其实不用找老师。</div>
+</div>
+
   <div class="contact-line">微信：fccj20180520</div>
   <p>铭松老师 · 情感挽回咨询</p>
   <p style="margin-top:8px;font-size:12px;">
@@ -263,5 +293,22 @@ s.parentNode.insertBefore(bp, s);
 </script>
 <!-- ===== End Floating WeChat CTA ===== -->
 
+<script>
+function copyWechat(){
+  var t=document.createElement('textarea');
+  t.value='fccj20180520';
+  t.setAttribute('readonly','');
+  t.style.position='absolute';t.style.left='-9999px';
+  document.body.appendChild(t);
+  t.select();
+  try{document.execCommand('copy');}catch(e){}
+  document.body.removeChild(t);
+  document.querySelectorAll('.contact-copy').forEach(function(b){
+    b.textContent='已复制';
+    b.classList.add('copied');
+    setTimeout(function(){b.textContent='复制微信号';b.classList.remove('copied');},2000);
+  });
+}
+</script>
 </body>
 </html>

@@ -45,6 +45,26 @@
   footer{text-align:center;padding:32px 20px;color:#999;font-size:13px;border-top:1px solid #eee;margin-top:32px}
   footer .contact-line{color:#c85c8e;font-size:15px;font-weight:600;margin-bottom:6px}
   footer p{margin-bottom:4px}
+/* 统一联系方式组件 */
+.contact-box{background:linear-gradient(135deg,#fdf3f8,#fff);border:2px solid #f0d4e3;border-radius:16px;padding:28px 24px;text-align:center;margin:32px auto;max-width:560px}
+.contact-title{font-size:18px;font-weight:700;color:#9b3e6e;margin-bottom:18px;line-height:1.5}
+.contact-qrcode img{width:160px;height:160px;border-radius:10px;margin-bottom:14px}
+.contact-id{font-size:20px;font-weight:700;color:#c85c8e;margin-bottom:12px;letter-spacing:1px}
+.contact-copy{background:#c85c8e;color:#fff;border:none;padding:10px 24px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:12px}
+.contact-copy:active{background:#a33d6e}
+.contact-copy.copied{background:#2e7d32}
+.contact-note{font-size:13px;color:#888;max-width:420px;margin:0 auto;line-height:1.7}
+.contact-inline{display:inline-flex;align-items:center;gap:8px;background:#fdf3f8;padding:6px 14px;border-radius:8px;border:1px solid #f0d4e3;color:#9b3e6e;font-weight:600;font-size:15px}
+.hero-cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:20px}
+.hero-cta .contact-id{font-size:24px;margin:0}
+.hero-cta .contact-qrcode img{width:180px;height:180px}
+.hero-cta .cta-note{font-size:13px;color:#999}
+footer .contact-box{background:#fff;border:1px solid #f0d4e3;padding:20px;margin:0 auto 20px;max-width:400px}
+footer .contact-title{font-size:15px;margin-bottom:12px}
+footer .contact-qrcode img{width:120px;height:120px}
+footer .contact-id{font-size:17px}
+footer .contact-note{font-size:12px}
+
 </style>
 <script type="application/ld+json">
 {
@@ -506,6 +526,7 @@
   <p>情感挽回常见问题，是指分手后想复合的人最常遇到的具体困惑和应对方法。以下是50个被问得最多的问题，每个回答基于7年一线咨询经验。</p>
   <p>分手之后，你会有一万个问题想问。能不能挽回？什么时候挽回？怎么开口？被拉黑了怎么办？</p>
   <p>下面这50个回答基于7年一线咨询经验整理，最后一次更新于2026年7月5日。</p>
+  <p style="margin-top:12px"><strong>如果找不到你的情况，可以直接加我微信：fccj20180520</strong>，把你的情况发给我，我先帮你判断有没有可能、值不值得挽回。</p>
 </div>
 
 <div class="expert-bio" style="background:#fff;border-radius:12px;padding:28px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-left:4px solid #9b3e6e">
@@ -1047,19 +1068,25 @@
 
 </div>
 
-<div class="cta">
-  <h3>你的情况比较特殊？</h3>
-  <p>每个人的分手原因、对方性格、当前处境都不一样<br>以上是通用建议，具体情况需要具体分析</p>
-  <div class="links">
-    <a class="btn-test" href="index.html">免费测挽回成功率</a>
-    <a class="btn-wx" href="about.html">联系铭松老师</a>
-  </div>
-  <p style="margin-top:14px;font-size:13px">微信：fccj20180520 · 首次诊断免费</p>
+<div class="contact-box" id="contact">
+  <div class="contact-title">你的情况比较特殊？把你的情况发给我</div>
+  <div class="contact-qrcode"><img src="images/wechat-qrcode.png" alt="铭松老师微信二维码" width="160" height="160" loading="lazy"></div>
+  <div class="contact-id">微信：fccj20180520</div>
+  <button class="contact-copy" onclick="copyWechat()">复制微信号</button>
+  <div class="contact-note">第一次聊聊不收费，不催你决定。有些情况其实不用找老师。</div>
 </div>
 
 </main>
 
 <footer>
+<div class="contact-box" id="contact">
+  <div class="contact-title">想具体聊聊？直接加我微信</div>
+  <div class="contact-qrcode"><img src="images/wechat-qrcode.png" alt="铭松老师微信二维码" width="160" height="160" loading="lazy"></div>
+  <div class="contact-id">微信：fccj20180520</div>
+  <button class="contact-copy" onclick="copyWechat()">复制微信号</button>
+  <div class="contact-note">第一次聊聊不收费，不催你决定。有些情况其实不用找老师。</div>
+</div>
+
   <div class="contact-line">微信：fccj20180520</div>
   <p>铭松老师 · 情感挽回咨询</p>
   <p style="margin-top:8px;font-size:12px;">
@@ -1153,5 +1180,22 @@ s.parentNode.insertBefore(bp, s);
 </script>
 <!-- ===== End Floating WeChat CTA ===== -->
 
+<script>
+function copyWechat(){
+  var t=document.createElement('textarea');
+  t.value='fccj20180520';
+  t.setAttribute('readonly','');
+  t.style.position='absolute';t.style.left='-9999px';
+  document.body.appendChild(t);
+  t.select();
+  try{document.execCommand('copy');}catch(e){}
+  document.body.removeChild(t);
+  document.querySelectorAll('.contact-copy').forEach(function(b){
+    b.textContent='已复制';
+    b.classList.add('copied');
+    setTimeout(function(){b.textContent='复制微信号';b.classList.remove('copied');},2000);
+  });
+}
+</script>
 </body>
 </html>
