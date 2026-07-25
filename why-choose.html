@@ -444,6 +444,24 @@ footer .contact-note{font-size:12px}
   ]
 }
 </script>
+<style>
+/* ===== WeChat Modal Styles ===== */
+.wechat-modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;justify-content:center;align-items:center}
+.wechat-modal-overlay.show{display:flex}
+.wechat-modal{background:#fff;border-radius:16px;padding:32px 28px 24px;max-width:340px;width:90%;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:modalIn 0.25s ease-out}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.wechat-modal-close{position:absolute;top:10px;right:14px;background:none;border:none;font-size:28px;color:#999;cursor:pointer;line-height:1;padding:0 4px}
+.wechat-modal-close:hover{color:#333}
+.wechat-modal-title{font-size:20px;font-weight:700;color:#333;margin-bottom:20px}
+.wechat-modal-qrcode{margin-bottom:12px}
+.wechat-modal-qrcode img{border-radius:10px;border:1px solid #eee}
+.wechat-modal-id{font-size:16px;color:#c85c8e;font-weight:600;margin-bottom:14px;word-break:break-all}
+.wechat-modal-copy{display:inline-block;background:#c85c8e;color:#fff;border:none;border-radius:8px;padding:12px 28px;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:12px;transition:background 0.2s}
+.wechat-modal-copy:hover{background:#b04a7a}
+.wechat-modal-note{font-size:13px;color:#999;line-height:1.7}
+/* Mobile floating bar uses modal too */
+.mobile-bar .btn-sm-main{cursor:pointer}
+</style>
 </head>
 <body>
 
@@ -458,7 +476,7 @@ footer .contact-note{font-size:12px}
       <a href="cases.html">学员故事</a>
       <a href="about.html">关于我</a>
       <a href="why-choose.html" class="active">为什么选我</a>
-      <a href="about.html" class="nav-cta">聊聊你的情况</a>
+      <a href="javascript:void(0)" class="nav-cta" onclick="openWechatModal(event)">聊聊你的情况</a>
     </div>
   </div>
 </nav>
@@ -476,7 +494,7 @@ footer .contact-note{font-size:12px}
     <strong>靠谱的挽回老师</strong>是指愿意花时间了解你的具体情况、能讲出亲手处理过的真实案例、从头到尾由同一个人跟你沟通的情感挽回咨询师。不是看广告看包装，是看人——看他愿不愿意先听你说完，再决定能不能帮你。
   </p>
   <div class="hero-actions">
-    <a href="about.html" class="btn btn-primary">💬 免费聊聊看，你自己判断</a>
+    <a href="javascript:void(0)" class="btn btn-primary" onclick="openWechatModal(event)">💬 加微信聊聊看，你自己判断</a>
     <a href="#checklist" class="btn btn-outline">先看7个判断标准</a>
   </div>
   <div class="hero-trust">
@@ -772,13 +790,34 @@ footer .contact-note{font-size:12px}
 <div class="mobile-bar">
   <div class="mobile-bar-inner">
     <a href="#checklist" class="btn-sm" style="background:#f5f5f5;color:var(--text-light)">7个判断标准</a>
-    <a href="about.html" class="btn-sm" style="background:var(--rose);color:#fff">💬 免费聊聊</a>
+    <a href="javascript:void(0)" class="btn-sm" style="background:var(--rose);color:#fff" onclick="openWechatModal(event)">💬 加微信聊聊</a>
   </div>
 </div>
 
 <div class="toast" id="toast">已复制微信号：fccj20180520</div>
 
 <script>
+
+// Open wechat modal
+function openWechatModal(e){
+  if(e) e.preventDefault();
+  var m = document.getElementById('wechatModalOverlay');
+  if(m) m.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  return false;
+}
+// Close wechat modal
+function closeWechatModal(e){
+  if(e && e.target !== document.getElementById('wechatModalOverlay')) return;
+  var m = document.getElementById('wechatModalOverlay');
+  if(m) m.classList.remove('show');
+  document.body.style.overflow = '';
+}
+// ESC key to close
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeWechatModal();
+});
+
 function copyWechat(){
   navigator.clipboard.writeText('fccj20180520').then(function(){
     var t = document.getElementById('toast');
@@ -891,6 +930,20 @@ s.parentNode.insertBefore(bp, s);
 <!-- ===== End Floating WeChat CTA ===== -->
 
 <script>
+
+// Open wechat modal
+
+function closeWechatModal(e){
+  if(e && e.target !== document.getElementById('wechatModalOverlay')) return;
+  var m = document.getElementById('wechatModalOverlay');
+  if(m) m.classList.remove('show');
+  document.body.style.overflow = '';
+}
+// ESC key to close
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeWechatModal();
+});
+
 function copyWechat(){
   var t=document.createElement('textarea');
   t.value='fccj20180520';
@@ -907,5 +960,17 @@ function copyWechat(){
   });
 }
 </script>
+
+<!-- ===== WeChat Contact Modal ===== -->
+<div class="wechat-modal-overlay" id="wechatModalOverlay" onclick="closeWechatModal(event)">
+  <div class="wechat-modal" onclick="event.stopPropagation()">
+    <button class="wechat-modal-close" onclick="closeWechatModal()">&times;</button>
+    <div class="wechat-modal-title">直接加我微信聊</div>
+    <div class="wechat-modal-qrcode"><img src="images/wechat-qrcode.png" alt="铭松老师微信二维码" width="180" height="180" loading="lazy"></div>
+    <div class="wechat-modal-id">微信：fccj20180520</div>
+    <button class="wechat-modal-copy" onclick="copyWechat()">📋 复制微信号</button>
+    <div class="wechat-modal-note">第一次聊聊不收费，不催你决定。<br>有些情况其实不用找老师，我先帮你判断。</div>
+  </div>
+</div>
 </body>
 </html>

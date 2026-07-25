@@ -111,6 +111,24 @@ footer .contact-note{font-size:12px}
   "mainEntityOfPage": "https://www.mingsonglaoshi.com/tool/wanhui-zice.html"
 }
 </script>
+<style>
+/* ===== WeChat Modal Styles ===== */
+.wechat-modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;justify-content:center;align-items:center}
+.wechat-modal-overlay.show{display:flex}
+.wechat-modal{background:#fff;border-radius:16px;padding:32px 28px 24px;max-width:340px;width:90%;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:modalIn 0.25s ease-out}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.wechat-modal-close{position:absolute;top:10px;right:14px;background:none;border:none;font-size:28px;color:#999;cursor:pointer;line-height:1;padding:0 4px}
+.wechat-modal-close:hover{color:#333}
+.wechat-modal-title{font-size:20px;font-weight:700;color:#333;margin-bottom:20px}
+.wechat-modal-qrcode{margin-bottom:12px}
+.wechat-modal-qrcode img{border-radius:10px;border:1px solid #eee}
+.wechat-modal-id{font-size:16px;color:#c85c8e;font-weight:600;margin-bottom:14px;word-break:break-all}
+.wechat-modal-copy{display:inline-block;background:#c85c8e;color:#fff;border:none;border-radius:8px;padding:12px 28px;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:12px;transition:background 0.2s}
+.wechat-modal-copy:hover{background:#b04a7a}
+.wechat-modal-note{font-size:13px;color:#999;line-height:1.7}
+/* Mobile floating bar uses modal too */
+.mobile-bar .btn-sm-main{cursor:pointer}
+</style>
 </head>
 <body>
 
@@ -551,6 +569,27 @@ s.parentNode.insertBefore(bp, s);
 <!-- ===== End Floating WeChat CTA ===== -->
 
 <script>
+
+// Open wechat modal
+function openWechatModal(e){
+  if(e) e.preventDefault();
+  var m = document.getElementById('wechatModalOverlay');
+  if(m) m.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  return false;
+}
+// Close wechat modal
+function closeWechatModal(e){
+  if(e && e.target !== document.getElementById('wechatModalOverlay')) return;
+  var m = document.getElementById('wechatModalOverlay');
+  if(m) m.classList.remove('show');
+  document.body.style.overflow = '';
+}
+// ESC key to close
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeWechatModal();
+});
+
 function copyWechat(){
   var t=document.createElement('textarea');
   t.value='fccj20180520';
@@ -567,5 +606,17 @@ function copyWechat(){
   });
 }
 </script>
+
+<!-- ===== WeChat Contact Modal ===== -->
+<div class="wechat-modal-overlay" id="wechatModalOverlay" onclick="closeWechatModal(event)">
+  <div class="wechat-modal" onclick="event.stopPropagation()">
+    <button class="wechat-modal-close" onclick="closeWechatModal()">&times;</button>
+    <div class="wechat-modal-title">直接加我微信聊</div>
+    <div class="wechat-modal-qrcode"><img src="images/wechat-qrcode.png" alt="铭松老师微信二维码" width="180" height="180" loading="lazy"></div>
+    <div class="wechat-modal-id">微信：fccj20180520</div>
+    <button class="wechat-modal-copy" onclick="copyWechat()">📋 复制微信号</button>
+    <div class="wechat-modal-note">第一次聊聊不收费，不催你决定。<br>有些情况其实不用找老师，我先帮你判断。</div>
+  </div>
+</div>
 </body>
 </html>
