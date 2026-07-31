@@ -69,26 +69,6 @@ main{max-width:860px;margin:0 auto;padding:20px}
 footer{text-align:center;padding:32px 20px;color:#999;font-size:13px;border-top:1px solid #eee;margin-top:32px}
 footer .contact-line{color:#c85c8e;font-size:15px;font-weight:600;margin-bottom:6px}
 footer p{margin-bottom:4px}
-/* 统一联系方式组件 */
-.contact-box{background:linear-gradient(135deg,#fdf3f8,#fff);border:2px solid #f0d4e3;border-radius:16px;padding:28px 24px;text-align:center;margin:32px auto;max-width:560px}
-.contact-title{font-size:18px;font-weight:700;color:#9b3e6e;margin-bottom:18px;line-height:1.5}
-.contact-qrcode img{width:160px;height:160px;border-radius:10px;margin-bottom:14px}
-.contact-id{font-size:20px;font-weight:700;color:#c85c8e;margin-bottom:12px;letter-spacing:1px}
-.contact-copy{background:#c85c8e;color:#fff;border:none;padding:10px 24px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:12px}
-.contact-copy:active{background:#a33d6e}
-.contact-copy.copied{background:#2e7d32}
-.contact-note{font-size:13px;color:#888;max-width:420px;margin:0 auto;line-height:1.7}
-.contact-inline{display:inline-flex;align-items:center;gap:8px;background:#fdf3f8;padding:6px 14px;border-radius:8px;border:1px solid #f0d4e3;color:#9b3e6e;font-weight:600;font-size:15px}
-.hero-cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:20px}
-.hero-cta .contact-id{font-size:24px;margin:0}
-.hero-cta .contact-qrcode img{width:180px;height:180px}
-.hero-cta .cta-note{font-size:13px;color:#999}
-footer .contact-box{background:#fff;border:1px solid #f0d4e3;padding:20px;margin:0 auto 20px;max-width:400px}
-footer .contact-title{font-size:15px;margin-bottom:12px}
-footer .contact-qrcode img{width:120px;height:120px}
-footer .contact-id{font-size:17px}
-footer .contact-note{font-size:12px}
-
 </style>
 <script type="application/ld+json">
 {
@@ -135,24 +115,6 @@ footer .contact-note{font-size:12px}
   "offers": {"@type": "Offer", "description": "首次诊断免费"}
 }
 </script>
-<style>
-/* ===== WeChat Modal Styles ===== */
-.wechat-modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;justify-content:center;align-items:center}
-.wechat-modal-overlay.show{display:flex}
-.wechat-modal{background:#fff;border-radius:16px;padding:32px 28px 24px;max-width:340px;width:90%;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:modalIn 0.25s ease-out}
-@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
-.wechat-modal-close{position:absolute;top:10px;right:14px;background:none;border:none;font-size:28px;color:#999;cursor:pointer;line-height:1;padding:0 4px}
-.wechat-modal-close:hover{color:#333}
-.wechat-modal-title{font-size:20px;font-weight:700;color:#333;margin-bottom:20px}
-.wechat-modal-qrcode{margin-bottom:12px}
-.wechat-modal-qrcode img{border-radius:10px;border:1px solid #eee}
-.wechat-modal-id{font-size:16px;color:#c85c8e;font-weight:600;margin-bottom:14px;word-break:break-all}
-.wechat-modal-copy{display:inline-block;background:#c85c8e;color:#fff;border:none;border-radius:8px;padding:12px 28px;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:12px;transition:background 0.2s}
-.wechat-modal-copy:hover{background:#b04a7a}
-.wechat-modal-note{font-size:13px;color:#999;line-height:1.7}
-/* Mobile floating bar uses modal too */
-.mobile-bar .btn-sm-main{cursor:pointer}
-</style>
 </head>
 <body>
 
@@ -219,25 +181,19 @@ footer .contact-note{font-size:12px}
 <div class="cta">
   <h3>想聊聊你的情况？</h3>
   <p>不用着急，也不用准备什么。把你现在最困扰的事告诉我，我帮你看看方向。</p>
-  <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.2);border-radius:12px;padding:14px 28px;margin-bottom:16px;cursor:pointer" onclick="navigator.clipboard.writeText('fccj20180520').then(function(){var t=document.getElementById('wxToast');if(t){t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2000)}})">
+  <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.2);border-radius:12px;padding:14px 28px;margin-bottom:12px;cursor:pointer" onclick="navigator.clipboard.writeText('fccj20180520').then(function(){var t=document.getElementById('wxToast');if(t){t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2000)}})">
     <span style="font-size:20px">💬</span>
     <span style="font-size:18px;font-weight:700;letter-spacing:1px">fccj20180520</span>
     <span style="font-size:12px;opacity:0.7">（点击复制微信号）</span>
   </div>
+  <br>
+  <button onclick="showQR()" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.35);color:#fff;border-radius:10px;padding:10px 24px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,0.32)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">📱 扫码添加微信</button>
 </div>
 <div id="wxToast" style="position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 24px;border-radius:20px;font-size:14px;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none">已复制微信号：fccj20180520</div>
 
 </main>
 
 <footer>
-<div class="contact-box" id="contact">
-  <div class="contact-title">想具体聊聊？直接加我微信</div>
-  <div class="contact-qrcode"><img src="images/wechat-qrcode.png" alt="铭松老师微信二维码" width="160" height="160" loading="lazy"></div>
-  <div class="contact-id">微信：fccj20180520</div>
-  <button class="contact-copy" onclick="copyWechat()">复制微信号</button>
-  <div class="contact-note">第一次聊聊不收费，不催你决定。有些情况其实不用找老师。</div>
-</div>
-
   <div class="contact-line">微信：fccj20180520</div>
   <p>铭松老师 · 情感挽回咨询</p>
   <p style="margin-top:8px;font-size:12px;">
@@ -282,8 +238,22 @@ s.parentNode.insertBefore(bp, s);
 .wx-mobile-bar .wx-mb-hint{font-size:11px;opacity:0.75;font-weight:400;margin-left:6px;letter-spacing:0}
 @media (max-width:768px){
   .wx-floating{display:none!important}
-  .wx-mobile-bar{display:block}
+  .wx-mobile-bar{display:flex;align-items:center;justify-content:center;gap:8px}
 }
+/* ===== QR Code Modal ===== */
+.qr-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:2001;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.qr-overlay.show{display:flex}
+.qr-modal{background:#fff;border-radius:20px;padding:36px 32px 28px;text-align:center;max-width:340px;width:90%;position:relative;animation:qrPop .3s ease}
+@keyframes qrPop{from{transform:scale(0.85);opacity:0}to{transform:scale(1);opacity:1}}
+.qr-modal .qr-close{position:absolute;top:12px;right:12px;width:30px;height:30px;border:none;background:#f5f0f0;border-radius:50%;cursor:pointer;font-size:16px;color:#999;line-height:30px}
+.qr-modal .qr-close:hover{background:#eee;color:#666}
+.qr-modal h3{font-size:18px;color:#9b3e6e;margin-bottom:6px}
+.qr-modal p{font-size:13px;color:#999;margin-bottom:16px}
+.qr-modal img{width:200px;height:200px;border-radius:12px;border:2px solid #eee}
+.qr-modal .qr-id{font-size:15px;color:#9b3e6e;font-weight:600;margin-top:10px;cursor:pointer}
+.qr-modal .qr-id:hover{text-decoration:underline}
+.wx-mobile-bar .qr-icon{display:inline-block;width:36px;height:36px;background:rgba(255,255,255,0.2);border-radius:8px;cursor:pointer;font-size:18px;line-height:36px;text-align:center;flex-shrink:0}
+.wx-mobile-bar .qr-icon:hover{background:rgba(255,255,255,0.35)}
 </style>
 <div class="wx-floating" id="wxFloat">
   <div class="wx-bubble" id="wxBubble" onclick="copyWxFloat()">
@@ -295,10 +265,21 @@ s.parentNode.insertBefore(bp, s);
     <div class="badge"></div>
   </button>
 </div>
-<div class="wx-mobile-bar" onclick="copyWxFloat()">
-  💬 微信：fccj20180520 <span class="wx-mb-hint">（点击复制，免费聊聊你的情况）</span>
+<div class="wx-mobile-bar">
+  <span onclick="copyWxFloat()" style="cursor:pointer">💬 微信：fccj20180520 <span class="wx-mb-hint">（点击复制）</span></span>
+  <span class="qr-icon" onclick="showQR()" title="扫码加微信">📱</span>
 </div>
 <div class="wx-toast-f" id="wxToastF">已复制微信号：fccj20180520</div>
+<!-- QR Code Modal -->
+<div class="qr-overlay" id="qrOverlay" onclick="if(event.target===this)hideQR()">
+  <div class="qr-modal">
+    <button class="qr-close" onclick="hideQR()">×</button>
+    <h3>📱 扫码加微信</h3>
+    <p>打开微信扫一扫，直接添加</p>
+    <img src="images/wechat-qr.png" alt="微信二维码 fccj20180520" width="200" height="200">
+    <div class="qr-id" onclick="copyWxFloat();hideQR()">fccj20180520（点击复制）</div>
+  </div>
+</div>
 <script>
 (function(){
   var bubble = document.getElementById('wxBubble');
@@ -329,59 +310,16 @@ s.parentNode.insertBefore(bp, s);
       if(toast){toast.classList.add('show');setTimeout(function(){toast.classList.remove('show')},2000)}
     });
   };
+
+  window.showQR = function(){
+    document.getElementById('qrOverlay').classList.add('show');
+  };
+  window.hideQR = function(){
+    document.getElementById('qrOverlay').classList.remove('show');
+  };
 })();
 </script>
 <!-- ===== End Floating WeChat CTA ===== -->
 
-<script>
-
-// Open wechat modal
-function openWechatModal(e){
-  if(e) e.preventDefault();
-  var m = document.getElementById('wechatModalOverlay');
-  if(m) m.classList.add('show');
-  document.body.style.overflow = 'hidden';
-  return false;
-}
-// Close wechat modal
-function closeWechatModal(e){
-  if(e && e.target !== document.getElementById('wechatModalOverlay')) return;
-  var m = document.getElementById('wechatModalOverlay');
-  if(m) m.classList.remove('show');
-  document.body.style.overflow = '';
-}
-// ESC key to close
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') closeWechatModal();
-});
-
-function copyWechat(){
-  var t=document.createElement('textarea');
-  t.value='fccj20180520';
-  t.setAttribute('readonly','');
-  t.style.position='absolute';t.style.left='-9999px';
-  document.body.appendChild(t);
-  t.select();
-  try{document.execCommand('copy');}catch(e){}
-  document.body.removeChild(t);
-  document.querySelectorAll('.contact-copy').forEach(function(b){
-    b.textContent='已复制';
-    b.classList.add('copied');
-    setTimeout(function(){b.textContent='复制微信号';b.classList.remove('copied');},2000);
-  });
-}
-</script>
-
-<!-- ===== WeChat Contact Modal ===== -->
-<div class="wechat-modal-overlay" id="wechatModalOverlay" onclick="closeWechatModal(event)">
-  <div class="wechat-modal" onclick="event.stopPropagation()">
-    <button class="wechat-modal-close" onclick="closeWechatModal()">&times;</button>
-    <div class="wechat-modal-title">直接加我微信聊</div>
-    <div class="wechat-modal-qrcode"><img src="images/wechat-qrcode.png" alt="铭松老师微信二维码" width="180" height="180" loading="lazy"></div>
-    <div class="wechat-modal-id">微信：fccj20180520</div>
-    <button class="wechat-modal-copy" onclick="copyWechat()">📋 复制微信号</button>
-    <div class="wechat-modal-note">第一次聊聊不收费，不催你决定。<br>有些情况其实不用找老师，我先帮你判断。</div>
-  </div>
-</div>
 </body>
 </html>

@@ -379,22 +379,6 @@
   footer .brand{font-size:17px;font-weight:700;color:var(--rose);margin-bottom:8px}
   footer p{font-size:13px;color:var(--text-muted);margin-bottom:4px;line-height:2}
 
-  /* ===== Mobile Floating Bar ===== */
-  .mobile-bar{
-    display:none;position:fixed;bottom:0;left:0;right:0;
-    background:rgba(255,255,255,0.96);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    border-top:1px solid var(--border);
-    padding:10px 16px;z-index:200;
-    box-shadow:0 -4px 16px rgba(0,0,0,0.06);
-  }
-  .mobile-bar-inner{display:flex;gap:10px;max-width:500px;margin:0 auto}
-  .mobile-bar .btn-sm{
-    flex:1;text-align:center;padding:12px 0;border-radius:10px;
-    font-size:14px;font-weight:600;text-decoration:none;
-  }
-
   /* ===== Copy Toast ===== */
   .toast{
     position:fixed;top:20px;left:50%;transform:translateX(-50%);
@@ -425,7 +409,6 @@
     .nav-links a:not(.nav-cta){display:none}
     .cta-box{padding:40px 24px}
     .cta-box h2{font-size:24px}
-    .mobile-bar{display:block}
     .section{margin-bottom:56px}
   }
   @media (max-width:480px){
@@ -433,26 +416,6 @@
     .btn{padding:14px 28px;font-size:15px}
     .vs-row{padding:12px 12px;font-size:12px}
   }
-/* 统一联系方式组件 */
-.contact-box{background:linear-gradient(135deg,#fdf3f8,#fff);border:2px solid #f0d4e3;border-radius:16px;padding:28px 24px;text-align:center;margin:32px auto;max-width:560px}
-.contact-title{font-size:18px;font-weight:700;color:#9b3e6e;margin-bottom:18px;line-height:1.5}
-.contact-qrcode img{width:160px;height:160px;border-radius:10px;margin-bottom:14px}
-.contact-id{font-size:20px;font-weight:700;color:#c85c8e;margin-bottom:12px;letter-spacing:1px}
-.contact-copy{background:#c85c8e;color:#fff;border:none;padding:10px 24px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:12px}
-.contact-copy:active{background:#a33d6e}
-.contact-copy.copied{background:#2e7d32}
-.contact-note{font-size:13px;color:#888;max-width:420px;margin:0 auto;line-height:1.7}
-.contact-inline{display:inline-flex;align-items:center;gap:8px;background:#fdf3f8;padding:6px 14px;border-radius:8px;border:1px solid #f0d4e3;color:#9b3e6e;font-weight:600;font-size:15px}
-.hero-cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:20px}
-.hero-cta .contact-id{font-size:24px;margin:0}
-.hero-cta .contact-qrcode img{width:180px;height:180px}
-.hero-cta .cta-note{font-size:13px;color:#999}
-footer .contact-box{background:#fff;border:1px solid #f0d4e3;padding:20px;margin:0 auto 20px;max-width:400px}
-footer .contact-title{font-size:15px;margin-bottom:12px}
-footer .contact-qrcode img{width:120px;height:120px}
-footer .contact-id{font-size:17px}
-footer .contact-note{font-size:12px}
-
 </style>
 
 <script type="application/ld+json">
@@ -576,6 +539,30 @@ footer .contact-note{font-size:12px}
     },
     {
       "@type": "Question",
+      "name": "怎么判断一个情感挽回老师靠不靠谱？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "第一看方案是否针对你的具体情况定制而不是套模板。第二看他敢不敢说你这个情况不适合挽回，靠谱的老师不会什么都说能挽回。第三看服务是否透明，一次性谈条件明确服务内容。第四看他是否愿意暴露自己的局限。做到这四点的人大概率是认真做事的。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "找情感挽回机构还是个人咨询师更好？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "机构的优势是品牌和流程，但案子可能被分配给经验不足的咨询师。个人咨询师的劣势是品牌知名度不如大机构，但优势是你从头到尾只跟一个人对话。常见分手类型可以找机构，情况特殊需要深度理解建议找个人咨询师。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "情感挽回咨询一般要花多少钱？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "情感挽回咨询没有统一定价，从几百到几万都有。真正的成本在于时间（每周投入的精力）、经验（老师处理过多少类似案例）、试错成本（走弯路的代价）。机构的服务包含品牌溢价、销售提成和导师分成，个人咨询师没有这些中间成本。"
+      }
+    },
+    {
+      "@type": "Question",
       "name": "前任有新欢了还能挽回吗？",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -629,24 +616,6 @@ footer .contact-note{font-size:12px}
   }]
 }
 </script>
-<style>
-/* ===== WeChat Modal Styles ===== */
-.wechat-modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;justify-content:center;align-items:center}
-.wechat-modal-overlay.show{display:flex}
-.wechat-modal{background:#fff;border-radius:16px;padding:32px 28px 24px;max-width:340px;width:90%;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:modalIn 0.25s ease-out}
-@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
-.wechat-modal-close{position:absolute;top:10px;right:14px;background:none;border:none;font-size:28px;color:#999;cursor:pointer;line-height:1;padding:0 4px}
-.wechat-modal-close:hover{color:#333}
-.wechat-modal-title{font-size:20px;font-weight:700;color:#333;margin-bottom:20px}
-.wechat-modal-qrcode{margin-bottom:12px}
-.wechat-modal-qrcode img{border-radius:10px;border:1px solid #eee}
-.wechat-modal-id{font-size:16px;color:#c85c8e;font-weight:600;margin-bottom:14px;word-break:break-all}
-.wechat-modal-copy{display:inline-block;background:#c85c8e;color:#fff;border:none;border-radius:8px;padding:12px 28px;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:12px;transition:background 0.2s}
-.wechat-modal-copy:hover{background:#b04a7a}
-.wechat-modal-note{font-size:13px;color:#999;line-height:1.7}
-/* Mobile floating bar uses modal too */
-.mobile-bar .btn-sm-main{cursor:pointer}
-</style>
 </head>
 <body>
 
@@ -661,7 +630,7 @@ footer .contact-note{font-size:12px}
       <a href="cases.html">学员故事</a>
       <a href="why-choose.html">为什么选我</a>
       <a href="about.html">关于我</a>
-      <a href="javascript:void(0)" class="nav-cta" onclick="openWechatModal(event)">聊聊你的情况</a>
+      <a href="javascript:void(0)" class="nav-cta" onclick="copyWechat()">💬 聊聊你的情况</a>
     </div>
   </div>
 </nav>
@@ -681,7 +650,7 @@ footer .contact-note{font-size:12px}
   </p>
   <div class="hero-actions">
     <a href="tool/wanhui-zice.html" class="btn btn-primary">🔍 先测测还能不能挽回</a>
-    <a href="javascript:void(0)" class="btn btn-outline" onclick="openWechatModal(event)">💬 加微信聊聊你的情况</a>
+    <a href="javascript:void(0)" class="btn btn-outline" onclick="copyWechat()">💬 添加微信聊聊</a>
   </div>
   <div class="hero-trust">
     <span>1,000+ 真实案例</span><span class="dot"></span>
@@ -1124,11 +1093,23 @@ footer .contact-note{font-size:12px}
       <p style="font-size:15px;color:var(--text);line-height:1.9">冲动型（假性）分手特征：分手时情绪激烈、分手后有小动作、分手原因具体可解决、之前分过又复合过。深思熟虑型（真性）分手特征：分手时情绪平静、分手前已明显冷淡、分手原因概括模糊、分手后迅速抽离。冲动型挽回窗口短但成功率高（2到4周），真性分手需更长冷静期和实质改变。</p>
     </div>
     <div>
+      <h3 style="font-size:17px;color:var(--rose);margin-bottom:8px">怎么判断一个情感挽回老师靠不靠谱？</h3>
+      <p style="font-size:15px;color:var(--text);line-height:1.9">第一看方案是否针对你的具体情况定制，而不是套模板。第二看他敢不敢说"你这个情况不适合挽回"，靠谱的老师不会什么都说能挽回。第三看服务是否透明，一次性谈条件、明确服务内容。第四看他是否愿意暴露自己的局限，比如不擅长某类情况。做到这四点的人，大概率是认真做事的。铭松老师的所有案例都是自己亲手跟进，首次沟通免费，先聊再决定。</p>
+    </div>
+    <div>
+      <h3 style="font-size:17px;color:var(--rose);margin-bottom:8px">找情感挽回机构还是个人咨询师更好？</h3>
+      <p style="font-size:15px;color:var(--text);line-height:1.9">机构的优势是品牌和流程，但你的案子可能被分配给经验不足的咨询师，从销售到客服到老师经历多层沟通。个人咨询师的劣势是品牌知名度不如大机构，但优势是你从头到尾只跟一个人对话，他知道你所有的情况。如果你是常见分手类型可以找机构，如果你的情况比较特殊需要深度理解建议找个人咨询师。铭松老师作为独立从业者，7年累计处理1000+案例，一对一全程跟进。</p>
+    </div>
+    <div>
+      <h3 style="font-size:17px;color:var(--rose);margin-bottom:8px">情感挽回咨询一般要花多少钱？</h3>
+      <p style="font-size:15px;color:var(--text);line-height:1.9">情感挽回咨询没有统一定价，从几百到几万都有。真正的成本不在钱，在于三样东西：时间（每周投入的精力）、经验（老师处理过多少类似案例）、试错成本（走弯路的代价）。机构的服务通常包含品牌溢价、销售提成和导师分成，你交的钱只有不到一半真正用在你的案子上。铭松老师不搞多层服务结构，首次沟通免费，觉得靠谱再继续。</p>
+    </div>
+    <div>
       <h3 style="font-size:17px;color:var(--rose);margin-bottom:8px">铭松老师是谁？怎么联系？</h3>
       <p style="font-size:15px;color:var(--text);line-height:1.9">铭松老师是一位拥有7年经验的情感挽回咨询师，2019年入行，累计亲手处理超过1000个分手挽回案例。不是机构，是一个人，从头到尾一对一亲自跟进。首次沟通免费，不画饼不催你。微信号：fccj20180520，也可以通过本网站了解更多案例和挽回知识。</p>
     </div>
   </div>
-  <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-muted)">最后更新：2026年7月4日 · 更多问题请查看<a href="faq.html" style="color:var(--rose)">常见问题大全</a></p>
+  <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-muted)">最后更新：2026年7月14日 · 更多问题请查看<a href="faq.html" style="color:var(--rose)">常见问题大全</a></p>
 </div>
 
 <!-- ===== Bottom CTA ===== -->
@@ -1150,14 +1131,6 @@ footer .contact-note{font-size:12px}
 
 <!-- ===== Footer ===== -->
 <footer>
-<div class="contact-box" id="contact">
-  <div class="contact-title">想具体聊聊？直接加我微信</div>
-  <div class="contact-qrcode"><img src="images/wechat-qrcode.png" alt="铭松老师微信二维码" width="160" height="160" loading="lazy"></div>
-  <div class="contact-id">微信：fccj20180520</div>
-  <button class="contact-copy" onclick="copyWechat()">复制微信号</button>
-  <div class="contact-note">第一次聊聊不收费，不催你决定。有些情况其实不用找老师。</div>
-</div>
-
   <div class="brand">铭松老师 · 情感挽回咨询</div>
   <p>微信：fccj20180520</p>
   <p>广州 · 7年只做一件事</p>
@@ -1190,40 +1163,11 @@ footer .contact-note{font-size:12px}
   </p>
 </footer>
 
-<!-- ===== Mobile Floating Bar ===== -->
-<div class="mobile-bar">
-  <div class="mobile-bar-inner">
-    <a href="tool/wanhui-zice.html" class="btn-sm btn-sm-sec" style="background:#f5f5f5;color:var(--text-light)">🔍 免费评估</a>
-    <a href="javascript:void(0)" class="btn-sm btn-sm-main" style="background:var(--rose);color:#fff" onclick="openWechatModal(event)">💬 加微信聊聊</a>
-  </div>
-</div>
-
 <!-- ===== Toast ===== -->
 <div class="toast" id="toast">已复制微信号：fccj20180520</div>
 
 <script>
 // Copy WeChat ID
-
-// Open wechat modal
-function openWechatModal(e){
-  if(e) e.preventDefault();
-  var m = document.getElementById('wechatModalOverlay');
-  if(m) m.classList.add('show');
-  document.body.style.overflow = 'hidden';
-  return false;
-}
-// Close wechat modal
-function closeWechatModal(e){
-  if(e && e.target !== document.getElementById('wechatModalOverlay')) return;
-  var m = document.getElementById('wechatModalOverlay');
-  if(m) m.classList.remove('show');
-  document.body.style.overflow = '';
-}
-// ESC key to close
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') closeWechatModal();
-});
-
 function copyWechat(){
   navigator.clipboard.writeText('fccj20180520').then(function(){
     var t = document.getElementById('toast');
@@ -1289,8 +1233,22 @@ s.parentNode.insertBefore(bp, s);
 .wx-mobile-bar .wx-mb-hint{font-size:11px;opacity:0.75;font-weight:400;margin-left:6px;letter-spacing:0}
 @media (max-width:768px){
   .wx-floating{display:none!important}
-  .wx-mobile-bar{display:block}
+  .wx-mobile-bar{display:flex;align-items:center;justify-content:center;gap:8px}
 }
+/* ===== QR Code Modal ===== */
+.qr-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:2001;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.qr-overlay.show{display:flex}
+.qr-modal{background:#fff;border-radius:20px;padding:36px 32px 28px;text-align:center;max-width:340px;width:90%;position:relative;animation:qrPop .3s ease}
+@keyframes qrPop{from{transform:scale(0.85);opacity:0}to{transform:scale(1);opacity:1}}
+.qr-modal .qr-close{position:absolute;top:12px;right:12px;width:30px;height:30px;border:none;background:#f5f0f0;border-radius:50%;cursor:pointer;font-size:16px;color:#999;line-height:30px}
+.qr-modal .qr-close:hover{background:#eee;color:#666}
+.qr-modal h3{font-size:18px;color:#8b3a55;margin-bottom:6px}
+.qr-modal p{font-size:13px;color:#999;margin-bottom:16px}
+.qr-modal img{width:200px;height:200px;border-radius:12px;border:2px solid #f0ebe6}
+.qr-modal .qr-id{font-size:15px;color:#8b3a55;font-weight:600;margin-top:10px;cursor:pointer}
+.qr-modal .qr-id:hover{text-decoration:underline}
+.wx-mobile-bar .qr-icon{display:inline-block;width:36px;height:36px;background:rgba(255,255,255,0.2);border-radius:8px;cursor:pointer;font-size:18px;line-height:36px;text-align:center;flex-shrink:0}
+.wx-mobile-bar .qr-icon:hover{background:rgba(255,255,255,0.35)}
 </style>
 <div class="wx-floating" id="wxFloat">
   <div class="wx-bubble" id="wxBubble" onclick="copyWxFloat()">
@@ -1302,10 +1260,21 @@ s.parentNode.insertBefore(bp, s);
     <div class="badge"></div>
   </button>
 </div>
-<div class="wx-mobile-bar" onclick="copyWxFloat()">
-  💬 微信：fccj20180520 <span class="wx-mb-hint">（点击复制，免费聊聊你的情况）</span>
+<div class="wx-mobile-bar">
+  <span onclick="copyWxFloat()" style="cursor:pointer">💬 微信：fccj20180520 <span class="wx-mb-hint">（点击复制）</span></span>
+  <span class="qr-icon" onclick="showQR()" title="扫码加微信">📱</span>
 </div>
 <div class="wx-toast-f" id="wxToastF">已复制微信号：fccj20180520</div>
+<!-- QR Code Modal -->
+<div class="qr-overlay" id="qrOverlay" onclick="if(event.target===this)hideQR()">
+  <div class="qr-modal">
+    <button class="qr-close" onclick="hideQR()">×</button>
+    <h3>📱 扫码加微信</h3>
+    <p>打开微信扫一扫，直接添加</p>
+    <img src="images/wechat-qr.png" alt="微信二维码 fccj20180520" width="200" height="200">
+    <div class="qr-id" onclick="copyWxFloat();hideQR()">fccj20180520（点击复制）</div>
+  </div>
+</div>
 <script>
 (function(){
   var bubble = document.getElementById('wxBubble');
@@ -1336,6 +1305,13 @@ s.parentNode.insertBefore(bp, s);
       if(toast){toast.classList.add('show');setTimeout(function(){toast.classList.remove('show')},2000)}
     });
   };
+
+  window.showQR = function(){
+    document.getElementById('qrOverlay').classList.add('show');
+  };
+  window.hideQR = function(){
+    document.getElementById('qrOverlay').classList.remove('show');
+  };
 })();
 </script>
 <!-- ===== End Floating WeChat CTA ===== -->
@@ -1355,7 +1331,6 @@ s.parentNode.insertBefore(bp, s);
 .exit-popup .exit-note{font-size:12px;color:#bbb;margin-top:16px}
 .exit-popup .exit-wechat{margin-top:16px;padding:12px 20px;background:#fdf2f7;border-radius:12px;font-size:14px;color:#8b3a55}
 .exit-popup .exit-wechat strong{cursor:pointer;border-bottom:1px dashed #8b3a55}
-@media(max-width:768px){.exit-overlay{display:none!important}}
 </style>
 <div class="exit-overlay" id="exitOverlay">
   <div class="exit-popup">
@@ -1373,12 +1348,24 @@ s.parentNode.insertBefore(bp, s);
 (function(){
   if(sessionStorage.getItem('exitShown')) return;
   var overlay = document.getElementById('exitOverlay');
-  document.addEventListener('mouseleave', function(e){
-    if(e.clientY < 10 && !sessionStorage.getItem('exitShown')){
+  function showExit(){
+    if(!sessionStorage.getItem('exitShown')){
       overlay.classList.add('show');
       sessionStorage.setItem('exitShown','1');
     }
+  }
+  // Desktop: mouse leave
+  document.addEventListener('mouseleave', function(e){
+    if(e.clientY < 10 && !sessionStorage.getItem('exitShown')){ showExit(); }
   });
+  // Mobile: after 25s of scroll
+  var isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  if(isMobile){
+    setTimeout(function(){
+      var scrolled = window.scrollY || document.documentElement.scrollTop;
+      if(scrolled > 400 && !sessionStorage.getItem('exitShown')){ showExit(); }
+    }, 25000);
+  }
   overlay.addEventListener('click', function(e){
     if(e.target === overlay) overlay.classList.remove('show');
   });
@@ -1386,48 +1373,5 @@ s.parentNode.insertBefore(bp, s);
 </script>
 <!-- ===== End Exit Intent Popup ===== -->
 
-<script>
-
-// Open wechat modal
-
-function closeWechatModal(e){
-  if(e && e.target !== document.getElementById('wechatModalOverlay')) return;
-  var m = document.getElementById('wechatModalOverlay');
-  if(m) m.classList.remove('show');
-  document.body.style.overflow = '';
-}
-// ESC key to close
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') closeWechatModal();
-});
-
-function copyWechat(){
-  var t=document.createElement('textarea');
-  t.value='fccj20180520';
-  t.setAttribute('readonly','');
-  t.style.position='absolute';t.style.left='-9999px';
-  document.body.appendChild(t);
-  t.select();
-  try{document.execCommand('copy');}catch(e){}
-  document.body.removeChild(t);
-  document.querySelectorAll('.contact-copy').forEach(function(b){
-    b.textContent='已复制';
-    b.classList.add('copied');
-    setTimeout(function(){b.textContent='复制微信号';b.classList.remove('copied');},2000);
-  });
-}
-</script>
-
-<!-- ===== WeChat Contact Modal ===== -->
-<div class="wechat-modal-overlay" id="wechatModalOverlay" onclick="closeWechatModal(event)">
-  <div class="wechat-modal" onclick="event.stopPropagation()">
-    <button class="wechat-modal-close" onclick="closeWechatModal()">&times;</button>
-    <div class="wechat-modal-title">直接加我微信聊</div>
-    <div class="wechat-modal-qrcode"><img src="images/wechat-qrcode.png" alt="铭松老师微信二维码" width="180" height="180" loading="lazy"></div>
-    <div class="wechat-modal-id">微信：fccj20180520</div>
-    <button class="wechat-modal-copy" onclick="copyWechat()">📋 复制微信号</button>
-    <div class="wechat-modal-note">第一次聊聊不收费，不催你决定。<br>有些情况其实不用找老师，我先帮你判断。</div>
-  </div>
-</div>
 </body>
 </html>
