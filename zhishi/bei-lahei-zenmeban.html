@@ -170,6 +170,21 @@ footer .contact-note{font-size:12px}
 /* Mobile floating bar uses modal too */
 .mobile-bar .btn-sm-main{cursor:pointer}
 </style>
+
+<!-- Baidu auto push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 </head>
 <body>
 
@@ -269,7 +284,7 @@ footer .contact-note{font-size:12px}
 <div class="cta-inline" style="background:linear-gradient(135deg,#fdf2f7,#f9e4ed);border:1px solid #f0d0df;border-radius:16px;padding:24px 28px;margin:36px 0;text-align:center">
   <p style="font-size:15px;color:#8b3a55;margin:0 0 12px;font-weight:600">👆 看到这里，说明你确实在认真考虑这件事</p>
   <p style="font-size:14px;color:#6b5b54;margin:0 0 16px">每个人的情况都不一样。把你现在最困扰的点告诉我，我帮你看看方向。第一次聊免费。</p>
-  <button onclick="navigator.clipboard.writeText('fccj20180520').then(function(){var t=document.getElementById('wxToastMid');if(!t){t=document.getElementById('wxToastF')};t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2000)})" style="background:#b8476e;color:#fff;border:none;padding:12px 32px;border-radius:24px;font-size:15px;cursor:pointer;font-weight:600;letter-spacing:1px;transition:all .2s;box-shadow:0 2px 12px rgba(184,71,110,0.3)" onmouseover="this.style.background='#8b3a55';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#b8476e';this.style.transform='none'">
+  <button onclick="copyWxUniversal()" style="background:#b8476e;color:#fff;border:none;padding:12px 32px;border-radius:24px;font-size:15px;cursor:pointer;font-weight:600;letter-spacing:1px;transition:all .2s;box-shadow:0 2px 12px rgba(184,71,110,0.3)" onmouseover="this.style.background='#8b3a55';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#b8476e';this.style.transform='none'">
     💬 复制微信：fccj20180520
   </button>
   <p style="font-size:12px;color:#999;margin:10px 0 0">7年 · 1000+案例 · 不是机构，是我一个人</p>
@@ -324,7 +339,7 @@ footer .contact-note{font-size:12px}
     <div class="cta">
       <h3>被拉黑了不知道怎么办？</h3>
       <p>每个人的情况不同，拉黑程度和原因也不同。如果你不确定自己该怎么应对，可以聊聊你的情况。</p>
-  <button onclick="navigator.clipboard.writeText('fccj20180520').then(function(){var t=document.getElementById('wxToastF')||document.querySelector('.wx-toast-f');if(t){t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2000)}})" style="background:var(--rose,#b8476e);color:#fff;border:none;padding:14px 36px;border-radius:28px;font-size:16px;cursor:pointer;font-weight:600;letter-spacing:0.5px;margin-top:12px;box-shadow:0 2px 12px rgba(184,71,110,0.25);transition:all .2s" onmouseover="this.style.background='var(--rose-deep,#8b3a55)';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--rose,#b8476e)';this.style.transform='none'">💬 复制微信：fccj20180520</button>
+  <button onclick="copyWxUniversal()" style="background:var(--rose,#b8476e);color:#fff;border:none;padding:14px 36px;border-radius:28px;font-size:16px;cursor:pointer;font-weight:600;letter-spacing:0.5px;margin-top:12px;box-shadow:0 2px 12px rgba(184,71,110,0.25);transition:all .2s" onmouseover="this.style.background='var(--rose-deep,#8b3a55)';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--rose,#b8476e)';this.style.transform='none'">💬 复制微信：fccj20180520</button>
   <p style="margin-top:14px;font-size:13px;opacity:0.7">首次沟通免费 · 不画饼不催你 · 先聊聊再说</p>
 </div>
   </article>
@@ -391,7 +406,7 @@ s.parentNode.insertBefore(bp, s);
 }
 </style>
 <div class="wx-floating" id="wxFloat">
-  <div class="wx-bubble" id="wxBubble" onclick="copyWxFloat()">
+  <div class="wx-bubble" id="wxBubble" onclick="copyWxUniversal()">
     💬 fccj20180520 <span class="copy-hint">点击复制</span>
   </div>
   <button class="wx-btn" id="wxBtn" onclick="toggleWxBubble()" title="加微信咨询">
@@ -400,7 +415,7 @@ s.parentNode.insertBefore(bp, s);
     <div class="badge"></div>
   </button>
 </div>
-<div class="wx-mobile-bar" onclick="copyWxFloat()">
+<div class="wx-mobile-bar" onclick="copyWxUniversal()">
   💬 微信：fccj20180520 <span class="wx-mb-hint">（点击复制，免费聊聊你的情况）</span>
 </div>
 <div class="wx-toast-f" id="wxToastF">已复制微信号：fccj20180520</div>
@@ -488,5 +503,86 @@ function copyWechat(){
     <div class="wechat-modal-note">第一次聊聊不收费，不催你决定。<br>有些情况其实不用找老师，我先帮你判断。</div>
   </div>
 </div>
+
+<!-- ===== Universal Clipboard Fix ===== -->
+<style>
+.wx-copy-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:3000;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.wx-copy-modal.show{display:flex}
+.wx-copy-box{background:#fff;border-radius:20px;padding:32px 28px;max-width:340px;width:85%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.2)}
+.wx-copy-box h3{font-size:18px;color:#9b3e6e;margin:0 0 8px}
+.wx-copy-box p{font-size:14px;color:#888;margin:0 0 20px;line-height:1.6}
+.wx-copy-input{width:100%;font-size:22px;font-weight:700;color:#9b3e6e;text-align:center;border:2px solid #f0d0df;border-radius:12px;padding:14px 8px;letter-spacing:2px;outline:none;user-select:all;-webkit-user-select:all;readonly}
+.wx-copy-hint{font-size:13px;color:#aaa;margin-top:12px}
+.wx-copy-close{margin-top:16px;padding:10px 32px;background:#9b3e6e;color:#fff;border:none;border-radius:24px;font-size:15px;cursor:pointer;font-weight:600}
+.wx-toast-univ{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#fff;padding:16px 28px;border-radius:12px;font-size:16px;z-index:3001;opacity:0;transition:opacity .3s;pointer-events:none;text-align:center}
+.wx-toast-univ.show{opacity:1}
+</style>
+<div class="wx-copy-modal" id="wxCopyModal" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="wx-copy-box">
+    <h3>💬 添加微信咨询</h3>
+    <p>长按下方微信号即可复制，或截图保存后打开微信扫一扫</p>
+    <input type="text" class="wx-copy-input" id="wxCopyInput" value="fccj20180520" readonly onclick="this.select()" onfocus="this.select()">
+    <div class="wx-copy-hint">长按微信号 → 选择"复制" → 打开微信粘贴搜索</div>
+    <br>
+    <img src="/images/wechat-qr.png" alt="微信二维码" style="width:160px;height:160px;margin:12px auto;border-radius:12px;display:block">
+    <p style="font-size:13px;color:#aaa;margin:8px 0 0">扫码直接加微信</p>
+    <button class="wx-copy-close" onclick="document.getElementById('wxCopyModal').classList.remove('show')">知道了</button>
+  </div>
+</div>
+<div class="wx-toast-univ" id="wxToastUniv">✅ 已复制微信号：fccj20180520<br><span style="font-size:13px;opacity:0.8">打开微信 → 添加朋友 → 粘贴搜索</span></div>
+<script>
+(function(){
+  function showToast(){
+    var t=document.getElementById('wxToastUniv');
+    if(t){t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
+  }
+  function showModal(){
+    var m=document.getElementById('wxCopyModal');
+    if(m){m.classList.add('show');
+      var inp=document.getElementById('wxCopyInput');
+      if(inp){setTimeout(function(){inp.select();inp.setSelectionRange(0,99999)},100)}
+    }
+  }
+  window.copyWxUniversal=function(){
+    var wx='fccj20180520';
+    // Method 1: Modern Clipboard API
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(wx).then(function(){
+        showToast();
+      }).catch(function(){
+        // Method 2: execCommand fallback
+        tryFallback();
+      });
+    }else{
+      tryFallback();
+    }
+    function tryFallback(){
+      try{
+        var ta=document.createElement('textarea');
+        ta.value=wx;
+        ta.style.position='fixed';
+        ta.style.top='-9999px';
+        ta.style.left='-9999px';
+        ta.style.opacity='0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ta.setSelectionRange(0,99999);
+        var ok=document.execCommand('copy');
+        document.body.removeChild(ta);
+        if(ok){showToast();}
+        else{showModal();}
+      }catch(e){
+        showModal();
+      }
+    }
+  };
+  // Also expose as copyWechat for backward compat
+  if(!window.copyWechat){window.copyWechat=window.copyWxUniversal;}
+  if(!window.copyWx){window.copyWx=window.copyWxUniversal;}
+  if(!window.copyWxFloat){window.copyWxFloat=window.copyWxUniversal;}
+})();
+</script>
+<!-- ===== End Universal Clipboard Fix ===== -->
 </body>
 </html>

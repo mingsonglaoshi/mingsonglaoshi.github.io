@@ -1,147 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.mingsonglaoshi.com/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.mingsonglaoshi.com/faq.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.mingsonglaoshi.com/cases.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.mingsonglaoshi.com/why-choose.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.mingsonglaoshi.com/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
+    <loc>https://mingsonglaoshi.com/about</loc>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/tool/wanhui-zice.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/zhenxing-jiaxing-fenshou.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/cases</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/wanhui-huangjin-qi.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/faq</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/fulian-celve.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/qinggan-wanhui-zhinan.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/duanlian-zhengque-zuofa.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/tool/wanhui-zice</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/bei-lahei-zenmeban.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/wanhui-test</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/qianren-buhui-xiaoxi.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/why-choose</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/qianren-shuo-zuo-pengyou.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/zhishi/bei-lahei-zenmeban</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/duifang-you-xinhuan.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/zhishi/chaojia-fenshou-wanhui</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/yidi-fenshou-wanhui.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/zhishi/duanlian-zhengque-zuofa</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/tisheng-xiyinli.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/zhishi/duifang-you-xinhuan</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/liaotian-bu-baolu-xuqiugan.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/zhishi/fenshou-di-yi-tiao-xiaoxi</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/chaojia-fenshou-wanhui.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/zhishi/fenshou-tiaozheng-xintai</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/zhuixun.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/zhishi/fenshou-yaobuyao-shan-weixin</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/fenshou-yaobuyao-shan-weixin.html</loc>
-    <lastmod>2026-07-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/zhishi/fulian-celve</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/fenshou-di-yi-tiao-xiaoxi.html</loc>
-    <lastmod>2026-07-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/zhishi/lengbaoli-fenshou-wanhui</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/lengbaoli-fenshou-wanhui.html</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/zhishi/liaotian-bu-baolu-xuqiugan</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.mingsonglaoshi.com/zhishi/fenshou-tiaozheng-xintai.html</loc>
-    <lastmod>2026-07-11</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mingsonglaoshi.com/zhishi/qianren-buhui-xiaoxi</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mingsonglaoshi.com/zhishi/qianren-shuo-zuo-pengyou</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mingsonglaoshi.com/zhishi/qinggan-wanhui-zhinan</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mingsonglaoshi.com/zhishi/tisheng-xiyinli</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mingsonglaoshi.com/zhishi/wanhui-huangjin-qi</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mingsonglaoshi.com/zhishi/wanhui-vs-xinli-zixun</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mingsonglaoshi.com/zhishi/yidi-fenshou-wanhui</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mingsonglaoshi.com/zhishi/zhenxing-jiaxing-fenshou</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mingsonglaoshi.com/zhishi/zhuixun</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>
