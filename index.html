@@ -649,8 +649,8 @@
     <strong>情感挽回</strong>，简单说就是通过理解分手的真正原因、调整沟通方式和重建吸引力，让对方重新对你产生好感和信任的过程。不是套路，是修复。
   </p>
   <div class="hero-actions">
-    <a href="tool/wanhui-zice.html" class="btn btn-primary" onclick="if(typeof umami!=='undefined')umami.track('hero_test_click')">🔍 先测测还能不能挽回</a>
-    <a href="javascript:void(0)" class="btn btn-outline" onclick="copyWechat();if(typeof umami!=='undefined')umami.track('hero_wechat_click')">💬 添加微信聊聊</a>
+    <a href="tool/wanhui-zice.html" class="btn btn-primary" data-umami-event="hero_test_click">🔍 先测测还能不能挽回</a>
+    <a href="javascript:void(0)" class="btn btn-outline" onclick="copyWechat();if(typeof umami!=='undefined'){setTimeout(function(){umami.track('hero_wechat_click')},100)}">💬 添加微信聊聊</a>
   </div>
   <div class="hero-trust">
     <span>1,000+ 真实案例</span><span class="dot"></span>
@@ -1174,7 +1174,7 @@ function copyWechat(){
     t.classList.add('show');
     setTimeout(function(){ t.classList.remove('show'); }, 2000);
     if(typeof umami !== 'undefined') {
-      umami.track('wechat_copy_home');
+      setTimeout(function(){ umami.track('wechat_copy_home'); }, 100);
     }
   });
 }
@@ -1307,7 +1307,7 @@ s.parentNode.insertBefore(bp, s);
     navigator.clipboard.writeText('fccj20180520').then(function(){
       if(toast){toast.classList.add('show');setTimeout(function(){toast.classList.remove('show')},2000)}
       if(typeof umami !== 'undefined') {
-        umami.track('wechat_copy_float');
+        setTimeout(function(){ umami.track('wechat_copy_float'); }, 100);
       }
     });
   };
@@ -1343,7 +1343,7 @@ s.parentNode.insertBefore(bp, s);
     <button class="close-btn" onclick="document.getElementById('exitOverlay').classList.remove('show')">×</button>
     <h2>等一下——<br>你的情况属于哪种分手？</h2>
     <p>分手类型判断错了，挽回方法全错。<br>3分钟自测，帮你判断挽回可能性 + 给出对应策略方向。</p>
-    <a href="tool/wanhui-zice.html" class="exit-btn" onclick="if(typeof umami!=='undefined')umami.track('exit_cta_click')">🔍 开始免费自测</a>
+    <a href="tool/wanhui-zice.html" class="exit-btn" data-umami-event="exit_cta_click">🔍 开始免费自测</a>
     <div class="exit-wechat">
       或者直接加微信聊聊：<strong onclick="navigator.clipboard.writeText('fccj20180520').then(function(){alert('微信号已复制：fccj20180520')})">fccj20180520</strong>
     </div>

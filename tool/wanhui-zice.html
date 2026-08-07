@@ -291,7 +291,7 @@ footer p{margin-bottom:4px}
 <!-- Mid-Test Sticky CTA -->
 <div class="mid-cta" id="midCta">
   <p>答不下去了？直接告诉我你的情况，我帮你判断 <span style="font-size:12px;font-weight:400;opacity:0.8">（比做题更快）</span></p>
-  <button onclick="copyWx();if(typeof umami!=='undefined')umami.track('mid_cta_click')">💬 复制微信，直接聊聊 →</button>
+  <button onclick="copyWx();if(typeof umami!=='undefined'){setTimeout(function(){umami.track('mid_cta_click')},100)}">💬 复制微信，直接聊聊 →</button>
 </div>
 
 <!-- ===== 结果区 ===== -->
@@ -320,8 +320,8 @@ footer p{margin-bottom:4px}
     <div class="cta-urgent">⚡ 每日仅接待10人，先到先评估</div>
     <h3>你的分数不低——但第一步走错全白费</h3>
     <p>同样22分的人，有人一周和好，有人把对方彻底推走了。把你的情况发给我，我帮你看看你现在做的对不对。</p>
-    <button onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_high')">📱 复制微信，免费评估 →</button>
-    <span class="alt-cta" onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_high_alt')">微信号：fccj20180520（点击复制）</span>
+    <button onclick="copyWx();if(typeof umami!=='undefined'){setTimeout(function(){umami.track('copy_wechat_high')},100)}">📱 复制微信，免费评估 →</button>
+    <span class="alt-cta" onclick="copyWx();if(typeof umami!=='undefined'){setTimeout(function(){umami.track('copy_wechat_high_alt')},100)}">微信号：fccj20180520（点击复制）</span>
   </div>
 </div>
 
@@ -349,8 +349,8 @@ footer p{margin-bottom:4px}
     <div class="cta-urgent">⚡ 每日仅接待10人，先到先评估</div>
     <h3>中等可行性——猜错一步就全白费了</h3>
     <p>这个区间是最需要专业判断的。断联多久？复联用什么理由？他现在对你的印象还剩多少？任何一个变量判断错，你的努力全白费。</p>
-    <button onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_mid')">📱 复制微信，免费评估 →</button>
-    <span class="alt-cta" onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_mid_alt')">微信号：fccj20180520（点击复制）</span>
+    <button onclick="copyWx();if(typeof umami!=='undefined'){setTimeout(function(){umami.track('copy_wechat_mid')},100)}">📱 复制微信，免费评估 →</button>
+    <span class="alt-cta" onclick="copyWx();if(typeof umami!=='undefined'){setTimeout(function(){umami.track('copy_wechat_mid_alt')},100)}">微信号：fccj20180520（点击复制）</span>
   </div>
 </div>
 
@@ -378,8 +378,8 @@ footer p{margin-bottom:4px}
     <div class="cta-urgent">⚡ 每日仅接待10人，先到先评估</div>
     <h3>你的情况确实很难——但这不是放弃的理由</h3>
     <p>我不会给你虚假的希望。把你的情况一五一十告诉我，我跟你实话实说：是该继续，还是该止损。7年经验，不套路。</p>
-    <button onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_low')">📱 复制微信，免费评估 →</button>
-    <span class="alt-cta" onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_low_alt')">微信号：fccj20180520（点击复制）</span>
+    <button onclick="copyWx();if(typeof umami!=='undefined'){setTimeout(function(){umami.track('copy_wechat_low')},100)}">📱 复制微信，免费评估 →</button>
+    <span class="alt-cta" onclick="copyWx();if(typeof umami!=='undefined'){setTimeout(function(){umami.track('copy_wechat_low_alt')},100)}">微信号：fccj20180520（点击复制）</span>
   </div>
 </div>
 
@@ -443,7 +443,7 @@ function pick(qid, val, btn) {
   
   // 追踪：首个回答 = 开始测试
   if(answered === 1 && typeof umami !== 'undefined') {
-    umami.track('test_started');
+    setTimeout(function(){ umami.track('test_started'); }, 100);
   }
 }
 
@@ -495,7 +495,7 @@ function showResult() {
   
   // 追踪：完成测试
   if(typeof umami !== 'undefined') {
-    umami.track('test_completed', { score: total, level: total >= 22 ? 'high' : total >= 12 ? 'mid' : 'low' });
+    setTimeout(function(){ umami.track('test_completed', { score: total, level: total >= 22 ? 'high' : total >= 12 ? 'mid' : 'low' }); }, 100);
   }
 }
 
@@ -516,7 +516,7 @@ function copyWx() {
     t.classList.add('show');
     setTimeout(function(){ t.classList.remove('show'); }, 2000);
     if(typeof umami !== 'undefined') {
-      umami.track('wechat_copy');
+      setTimeout(function(){ umami.track('wechat_copy'); }, 100);
     }
   });
 }
