@@ -649,8 +649,8 @@
     <strong>情感挽回</strong>，简单说就是通过理解分手的真正原因、调整沟通方式和重建吸引力，让对方重新对你产生好感和信任的过程。不是套路，是修复。
   </p>
   <div class="hero-actions">
-    <a href="tool/wanhui-zice.html" class="btn btn-primary">🔍 先测测还能不能挽回</a>
-    <a href="javascript:void(0)" class="btn btn-outline" onclick="copyWechat()">💬 添加微信聊聊</a>
+    <a href="tool/wanhui-zice.html" class="btn btn-primary" onclick="if(typeof umami!=='undefined')umami.track('hero_test_click')">🔍 先测测还能不能挽回</a>
+    <a href="javascript:void(0)" class="btn btn-outline" onclick="copyWechat();if(typeof umami!=='undefined')umami.track('hero_wechat_click')">💬 添加微信聊聊</a>
   </div>
   <div class="hero-trust">
     <span>1,000+ 真实案例</span><span class="dot"></span>
@@ -1173,6 +1173,9 @@ function copyWechat(){
     var t = document.getElementById('toast');
     t.classList.add('show');
     setTimeout(function(){ t.classList.remove('show'); }, 2000);
+    if(typeof umami !== 'undefined') {
+      umami.track('wechat_copy_home');
+    }
   });
 }
 
@@ -1251,7 +1254,7 @@ s.parentNode.insertBefore(bp, s);
 .wx-mobile-bar .qr-icon:hover{background:rgba(255,255,255,0.35)}
 </style>
 <div class="wx-floating" id="wxFloat">
-  <div class="wx-bubble" id="wxBubble" onclick="copyWxUniversal()">
+  <div class="wx-bubble" id="wxBubble" onclick="copyWxFloat()">
     💬 fccj20180520 <span class="copy-hint">点击复制</span>
   </div>
   <button class="wx-btn" id="wxBtn" onclick="toggleWxBubble()" title="加微信咨询">
@@ -1261,8 +1264,8 @@ s.parentNode.insertBefore(bp, s);
   </button>
 </div>
 <div class="wx-mobile-bar">
-  <span onclick="copyWxUniversal()" style="cursor:pointer">💬 微信：fccj20180520 <span class="wx-mb-hint">（点击复制）</span></span>
-  <span class="qr-icon" onclick="copyWxUniversal();return false;" title="点击复制微信或扫码">📱扫码</span>
+  <span onclick="copyWxFloat()" style="cursor:pointer">💬 微信：fccj20180520 <span class="wx-mb-hint">（点击复制）</span></span>
+  <span class="qr-icon" onclick="showQR()" title="扫码加微信">📱</span>
 </div>
 <div class="wx-toast-f" id="wxToastF">已复制微信号：fccj20180520</div>
 <!-- QR Code Modal -->
@@ -1282,10 +1285,10 @@ s.parentNode.insertBefore(bp, s);
   var toast = document.getElementById('wxToastF');
   var shown = false;
 
-  // Show bubble after 8 seconds on first visit, then on hover
+  // Show bubble after 3 seconds on first visit, then on hover
   setTimeout(function(){
     if(!shown) { bubble.classList.add('show'); shown = true; }
-  }, 8000);
+  }, 3000);
 
   btn.addEventListener('mouseenter', function(){
     bubble.classList.add('show');
@@ -1303,6 +1306,9 @@ s.parentNode.insertBefore(bp, s);
   window.copyWxFloat = function(){
     navigator.clipboard.writeText('fccj20180520').then(function(){
       if(toast){toast.classList.add('show');setTimeout(function(){toast.classList.remove('show')},2000)}
+      if(typeof umami !== 'undefined') {
+        umami.track('wechat_copy_float');
+      }
     });
   };
 
@@ -1337,9 +1343,9 @@ s.parentNode.insertBefore(bp, s);
     <button class="close-btn" onclick="document.getElementById('exitOverlay').classList.remove('show')">×</button>
     <h2>等一下——<br>你的情况属于哪种分手？</h2>
     <p>分手类型判断错了，挽回方法全错。<br>3分钟自测，帮你判断挽回可能性 + 给出对应策略方向。</p>
-    <a href="tool/wanhui-zice.html" class="exit-btn">🔍 开始免费自测</a>
+    <a href="tool/wanhui-zice.html" class="exit-btn" onclick="if(typeof umami!=='undefined')umami.track('exit_cta_click')">🔍 开始免费自测</a>
     <div class="exit-wechat">
-      或者直接加微信聊聊：<strong onclick="copyWxUniversal()">fccj20180520</strong>
+      或者直接加微信聊聊：<strong onclick="navigator.clipboard.writeText('fccj20180520').then(function(){alert('微信号已复制：fccj20180520')})">fccj20180520</strong>
     </div>
     <p class="exit-note">首次沟通免费 · 不画饼不催你 · 7年1000+案例</p>
   </div>
@@ -1372,7 +1378,6 @@ s.parentNode.insertBefore(bp, s);
 })();
 </script>
 <!-- ===== End Exit Intent Popup ===== -->
-
 
 <!-- ===== Universal Clipboard Fix ===== -->
 <style>
@@ -1415,12 +1420,10 @@ s.parentNode.insertBefore(bp, s);
   }
   window.copyWxUniversal=function(){
     var wx='fccj20180520';
-    // Method 1: Modern Clipboard API
     if(navigator.clipboard&&navigator.clipboard.writeText){
       navigator.clipboard.writeText(wx).then(function(){
         showToast();
       }).catch(function(){
-        // Method 2: execCommand fallback
         tryFallback();
       });
     }else{
@@ -1447,12 +1450,12 @@ s.parentNode.insertBefore(bp, s);
       }
     }
   };
-  // Also expose as copyWechat for backward compat
   if(!window.copyWechat){window.copyWechat=window.copyWxUniversal;}
   if(!window.copyWx){window.copyWx=window.copyWxUniversal;}
   if(!window.copyWxFloat){window.copyWxFloat=window.copyWxUniversal;}
 })();
 </script>
 <!-- ===== End Universal Clipboard Fix ===== -->
+
 </body>
 </html>

@@ -77,26 +77,32 @@ footer p{margin-bottom:4px}
 .related a{display:block;color:#c85c8e;text-decoration:none;padding:8px 0;font-size:15px}
 .related a:hover{text-decoration:underline}
 .note{margin-top:8px;font-size:13px;color:#aaa;text-align:center}
-/* 统一联系方式组件 */
-.contact-box{background:linear-gradient(135deg,#fdf3f8,#fff);border:2px solid #f0d4e3;border-radius:16px;padding:28px 24px;text-align:center;margin:32px auto;max-width:560px}
-.contact-title{font-size:18px;font-weight:700;color:#9b3e6e;margin-bottom:18px;line-height:1.5}
-.contact-qrcode img{width:160px;height:160px;border-radius:10px;margin-bottom:14px}
-.contact-id{font-size:20px;font-weight:700;color:#c85c8e;margin-bottom:12px;letter-spacing:1px}
-.contact-copy{background:#c85c8e;color:#fff;border:none;padding:10px 24px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:12px}
-.contact-copy:active{background:#a33d6e}
-.contact-copy.copied{background:#2e7d32}
-.contact-note{font-size:13px;color:#888;max-width:420px;margin:0 auto;line-height:1.7}
-.contact-inline{display:inline-flex;align-items:center;gap:8px;background:#fdf3f8;padding:6px 14px;border-radius:8px;border:1px solid #f0d4e3;color:#9b3e6e;font-weight:600;font-size:15px}
-.hero-cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:20px}
-.hero-cta .contact-id{font-size:24px;margin:0}
-.hero-cta .contact-qrcode img{width:180px;height:180px}
-.hero-cta .cta-note{font-size:13px;color:#999}
-footer .contact-box{background:#fff;border:1px solid #f0d4e3;padding:20px;margin:0 auto 20px;max-width:400px}
-footer .contact-title{font-size:15px;margin-bottom:12px}
-footer .contact-qrcode img{width:120px;height:120px}
-footer .contact-id{font-size:17px}
-footer .contact-note{font-size:12px}
 
+/* ===== Progress Bar ===== */
+.progress-bar-wrap{background:#fafafa;border-radius:8px;padding:14px 16px;margin-bottom:16px;border:1px solid #f0e0ea}
+.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.progress-top .p-label{font-size:13px;color:#888}
+.progress-top .p-count{font-size:13px;color:#9b3e6e;font-weight:600}
+.progress-track{height:6px;background:#eee;border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#c85c8e,#9b3e6e);border-radius:3px;transition:width .3s ease;width:0%}
+
+/* ===== Mid-Test CTA (appears after 5+ answers) ===== */
+.mid-cta{display:none;position:sticky;bottom:0;left:0;right:0;background:linear-gradient(135deg,#9b3e6e,#7a2e56);color:#fff;padding:14px 20px;text-align:center;z-index:90;box-shadow:0 -4px 16px rgba(0,0,0,0.15);animation:slideUp .3s ease}
+.mid-cta.show{display:block}
+.mid-cta p{color:#fff;font-size:14px;margin:0 0 10px;font-weight:600}
+.mid-cta button{background:#fff;color:#9b3e6e;border:none;padding:10px 28px;border-radius:24px;font-size:14px;font-weight:600;cursor:pointer}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+
+/* ===== Pulse CTA in result ===== */
+.result-cta-enhanced{background:linear-gradient(135deg,#9b3e6e,#7a2e56);border-radius:16px;padding:28px 20px;margin-top:24px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.result-cta-enhanced::before{content:'';position:absolute;top:-30px;right:-30px;width:80px;height:80px;background:rgba(255,255,255,0.08);border-radius:50%}
+.result-cta-enhanced *{position:relative;z-index:1}
+.result-cta-enhanced h3{color:#fff;font-size:20px;margin:0 0 8px}
+.result-cta-enhanced p{color:rgba(255,255,255,0.88);font-size:14px;margin:0 0 16px}
+.result-cta-enhanced .cta-urgent{display:inline-block;background:rgba(255,255,255,0.15);padding:6px 18px;border-radius:20px;font-size:12px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.25)}
+.result-cta-enhanced button{background:#fff;color:#9b3e6e;border:none;padding:13px 36px;border-radius:26px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:all .2s}
+.result-cta-enhanced button:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.2)}
+.result-cta-enhanced .alt-cta{display:block;margin-top:12px;font-size:12px;opacity:0.7;text-decoration:underline;cursor:pointer}
 </style>
 <script type="application/ld+json">
 {
@@ -110,39 +116,6 @@ footer .contact-note{font-size:12px}
   "publisher": {"@type": "Organization", "name": "铭松老师情感挽回咨询", "url": "https://www.mingsonglaoshi.com/"},
   "mainEntityOfPage": "https://www.mingsonglaoshi.com/tool/wanhui-zice.html"
 }
-</script>
-<style>
-/* ===== WeChat Modal Styles ===== */
-.wechat-modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;justify-content:center;align-items:center}
-.wechat-modal-overlay.show{display:flex}
-.wechat-modal{background:#fff;border-radius:16px;padding:32px 28px 24px;max-width:340px;width:90%;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:modalIn 0.25s ease-out}
-@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
-.wechat-modal-close{position:absolute;top:10px;right:14px;background:none;border:none;font-size:28px;color:#999;cursor:pointer;line-height:1;padding:0 4px}
-.wechat-modal-close:hover{color:#333}
-.wechat-modal-title{font-size:20px;font-weight:700;color:#333;margin-bottom:20px}
-.wechat-modal-qrcode{margin-bottom:12px}
-.wechat-modal-qrcode img{border-radius:10px;border:1px solid #eee}
-.wechat-modal-id{font-size:16px;color:#c85c8e;font-weight:600;margin-bottom:14px;word-break:break-all}
-.wechat-modal-copy{display:inline-block;background:#c85c8e;color:#fff;border:none;border-radius:8px;padding:12px 28px;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:12px;transition:background 0.2s}
-.wechat-modal-copy:hover{background:#b04a7a}
-.wechat-modal-note{font-size:13px;color:#999;line-height:1.7}
-/* Mobile floating bar uses modal too */
-.mobile-bar .btn-sm-main{cursor:pointer}
-</style>
-
-<!-- Baidu auto push -->
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    } else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
 </script>
 </head>
 <body>
@@ -174,6 +147,17 @@ footer .contact-note{font-size:12px}
 </div>
 
 <h2>开始自测（全部单选，点击选项即可）</h2>
+
+<!-- Progress Bar -->
+<div class="progress-bar-wrap" id="progressBarWrap">
+  <div class="progress-top">
+    <span class="p-label">📝 答题进度</span>
+    <span class="p-count" id="progressCount">0 / 10</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+</div>
 
 <div id="quiz">
 
@@ -304,6 +288,12 @@ footer .contact-note{font-size:12px}
 
 </div><!-- end #quiz -->
 
+<!-- Mid-Test Sticky CTA -->
+<div class="mid-cta" id="midCta">
+  <p>答不下去了？直接告诉我你的情况，我帮你判断 <span style="font-size:12px;font-weight:400;opacity:0.8">（比做题更快）</span></p>
+  <button onclick="copyWx();if(typeof umami!=='undefined')umami.track('mid_cta_click')">💬 复制微信，直接聊聊 →</button>
+</div>
+
 <!-- ===== 结果区 ===== -->
 
 <!-- 高可行性 -->
@@ -326,10 +316,12 @@ footer .contact-note{font-size:12px}
       <li><strong>别等他主动来找你。</strong>冲动型分手需要你主动给台阶，但不能用"我们聊聊吧"这种压迫的方式。用什么理由去联系、什么时候联系、第一句话怎么说——这些细节决定成败。</li>
     </ul>
   </div>
-  <div style="background:linear-gradient(135deg,#fdf2f7,#f9e4ed);border:2px solid #d4a0bf;border-radius:14px;padding:20px;margin-top:20px;text-align:center">
-    <p style="font-size:14px;color:#8b3a55;margin:0 0 6px;font-weight:600">你的分数不低——但你用对方法了吗？</p>
-    <p style="font-size:13px;color:#6b5b54;margin:0 0 14px">同样22分的人，有人一周和好，有人把对方彻底推走了。区别全在第一步。把你的具体情况发给我，我帮你看看你现在做的对不对。首次沟通免费。</p>
-    <button onclick="copyWx()" style="background:#9b3e6e;color:#fff;border:none;padding:12px 32px;border-radius:24px;font-size:15px;cursor:pointer;font-weight:600;box-shadow:0 2px 12px rgba(155,62,110,0.3)">复制微信，聊聊你的情况 →</button>
+  <div class="result-cta-enhanced">
+    <div class="cta-urgent">⚡ 每日仅接待10人，先到先评估</div>
+    <h3>你的分数不低——但第一步走错全白费</h3>
+    <p>同样22分的人，有人一周和好，有人把对方彻底推走了。把你的情况发给我，我帮你看看你现在做的对不对。</p>
+    <button onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_high')">📱 复制微信，免费评估 →</button>
+    <span class="alt-cta" onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_high_alt')">微信号：fccj20180520（点击复制）</span>
   </div>
 </div>
 
@@ -353,10 +345,12 @@ footer .contact-note{font-size:12px}
       <li><strong>别在网上到处搜"挽回攻略"然后照搬。</strong>每个案例都不一样，适合别人的方法可能让你的情况更糟。</li>
     </ul>
   </div>
-  <div style="background:linear-gradient(135deg,#fdf2f7,#f9e4ed);border:2px solid #d4a0bf;border-radius:14px;padding:20px;margin-top:20px;text-align:center">
-    <p style="font-size:14px;color:#8b3a55;margin:0 0 6px;font-weight:600">你已经在猜了吗？再猜下去，他可能真的要往前走了</p>
-    <p style="font-size:13px;color:#6b5b54;margin:0 0 14px">把你的具体故事告诉我——从怎么分的手到现在你做了什么。我帮你判断下一步是该等还是该动。7年经验，不让你走弯路。首次免费。</p>
-    <button onclick="copyWx()" style="background:#9b3e6e;color:#fff;border:none;padding:12px 32px;border-radius:24px;font-size:15px;cursor:pointer;font-weight:600;box-shadow:0 2px 12px rgba(155,62,110,0.3)">复制微信，聊聊你的情况 →</button>
+  <div class="result-cta-enhanced">
+    <div class="cta-urgent">⚡ 每日仅接待10人，先到先评估</div>
+    <h3>中等可行性——猜错一步就全白费了</h3>
+    <p>这个区间是最需要专业判断的。断联多久？复联用什么理由？他现在对你的印象还剩多少？任何一个变量判断错，你的努力全白费。</p>
+    <button onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_mid')">📱 复制微信，免费评估 →</button>
+    <span class="alt-cta" onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_mid_alt')">微信号：fccj20180520（点击复制）</span>
   </div>
 </div>
 
@@ -380,10 +374,12 @@ footer .contact-note{font-size:12px}
       <li><strong>你真的准备好改变了吗？</strong>低可行性的挽回，靠的不是技巧，是你真的变了。当你重新出现在他面前的时候，让他看到的是一个跟之前截然不同的人——而不是同一个人、同一套说辞。</li>
     </ul>
   </div>
-  <div style="background:linear-gradient(135deg,#fdf2f7,#f9e4ed);border:2px solid #d4a0bf;border-radius:14px;padding:20px;margin-top:20px;text-align:center">
-    <p style="font-size:14px;color:#8b3a55;margin:0 0 6px;font-weight:600">你的情况需要一对一的判断，自己乱试只会越来越糟</p>
-    <p style="font-size:13px;color:#6b5b54;margin:0 0 14px">我不会给你虚假的希望。把你的情况一五一十告诉我，我跟你实话实说——是该继续，还是该止损。7年经验，不套路。首次免费。</p>
-    <button onclick="copyWx()" style="background:#9b3e6e;color:#fff;border:none;padding:12px 32px;border-radius:24px;font-size:15px;cursor:pointer;font-weight:600;box-shadow:0 2px 12px rgba(155,62,110,0.3)">复制微信，聊聊你的情况 →</button>
+  <div class="result-cta-enhanced">
+    <div class="cta-urgent">⚡ 每日仅接待10人，先到先评估</div>
+    <h3>你的情况确实很难——但这不是放弃的理由</h3>
+    <p>我不会给你虚假的希望。把你的情况一五一十告诉我，我跟你实话实说：是该继续，还是该止损。7年经验，不套路。</p>
+    <button onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_low')">📱 复制微信，免费评估 →</button>
+    <span class="alt-cta" onclick="copyWx();if(typeof umami!=='undefined')umami.track('copy_wechat_low_alt')">微信号：fccj20180520（点击复制）</span>
   </div>
 </div>
 
@@ -412,14 +408,6 @@ footer .contact-note{font-size:12px}
 </main>
 
 <footer>
-<div class="contact-box" id="contact">
-  <div class="contact-title">想具体聊聊？直接加我微信</div>
-  <div class="contact-qrcode"><img src="../images/wechat-qrcode.png" alt="铭松老师微信二维码" width="160" height="160" loading="lazy"></div>
-  <div class="contact-id">微信：fccj20180520</div>
-  <button class="contact-copy" onclick="copyWechat()">复制微信号</button>
-  <div class="contact-note">第一次聊聊不收费，不催你决定。有些情况其实不用找老师。</div>
-</div>
-
   <p class="contact-line">微信号：fccj20180520</p>
   <p>铭松老师 · 7年情感挽回咨询 · 1000+来访经验</p>
   <p style="margin-top:8px;font-size:12px;">
@@ -442,6 +430,21 @@ function pick(qid, val, btn) {
   btn.classList.add('selected');
   card.classList.add('answered');
   scores[qid] = val;
+  
+  // 更新进度条
+  var answered = Object.keys(scores).length;
+  document.getElementById('progressCount').textContent = answered + ' / 10';
+  document.getElementById('progressFill').style.width = (answered * 10) + '%';
+  
+  // 答了5题以上，显示中途CTA
+  if(answered >= 5) {
+    document.getElementById('midCta').classList.add('show');
+  }
+  
+  // 追踪：首个回答 = 开始测试
+  if(answered === 1 && typeof umami !== 'undefined') {
+    umami.track('test_started');
+  }
 }
 
 function showResult() {
@@ -486,6 +489,14 @@ function showResult() {
   document.getElementById(scoreEl).textContent = total;
   document.getElementById(resultId).classList.add('show');
   document.getElementById(resultId).scrollIntoView({behavior: 'smooth'});
+  
+  // 隐藏中途CTA，显示最终结果
+  document.getElementById('midCta').classList.remove('show');
+  
+  // 追踪：完成测试
+  if(typeof umami !== 'undefined') {
+    umami.track('test_completed', { score: total, level: total >= 22 ? 'high' : total >= 12 ? 'mid' : 'low' });
+  }
 }
 
 function resetQuiz() {
@@ -493,6 +504,9 @@ function resetQuiz() {
   document.querySelectorAll('.option-btn').forEach(function(b){ b.classList.remove('selected'); });
   document.querySelectorAll('.question-card').forEach(function(c){ c.classList.remove('answered'); });
   document.querySelectorAll('.result-card').forEach(function(r){ r.classList.remove('show'); });
+  document.getElementById('progressCount').textContent = '0 / 10';
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('midCta').classList.remove('show');
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
@@ -501,6 +515,9 @@ function copyWx() {
     var t = document.getElementById('wxToastQuiz');
     t.classList.add('show');
     setTimeout(function(){ t.classList.remove('show'); }, 2000);
+    if(typeof umami !== 'undefined') {
+      umami.track('wechat_copy');
+    }
   });
 }
 </script>
@@ -542,7 +559,7 @@ s.parentNode.insertBefore(bp, s);
 }
 </style>
 <div class="wx-floating" id="wxFloat">
-  <div class="wx-bubble" id="wxBubble" onclick="copyWxUniversal()">
+  <div class="wx-bubble" id="wxBubble" onclick="copyWxFloat()">
     聊聊你的情况 <span class="copy-hint">点击复制微信</span>
   </div>
   <button class="wx-btn" id="wxBtn" onclick="toggleWxBubble()" title="加微信咨询">
@@ -551,7 +568,7 @@ s.parentNode.insertBefore(bp, s);
     <div class="badge"></div>
   </button>
 </div>
-<div class="wx-mobile-bar" onclick="copyWxUniversal()">
+<div class="wx-mobile-bar" onclick="copyWxFloat()">
   💬 微信：fccj20180520 <span class="wx-mb-hint">（点击复制，免费聊聊你的情况）</span>
 </div>
 <div class="wx-toast-f" id="wxToastF">已复制微信号：fccj20180520</div>
@@ -582,57 +599,6 @@ s.parentNode.insertBefore(bp, s);
 })();
 </script>
 <!-- ===== End Floating WeChat CTA ===== -->
-
-<script>
-
-// Open wechat modal
-function openWechatModal(e){
-  if(e) e.preventDefault();
-  var m = document.getElementById('wechatModalOverlay');
-  if(m) m.classList.add('show');
-  document.body.style.overflow = 'hidden';
-  return false;
-}
-// Close wechat modal
-function closeWechatModal(e){
-  if(e && e.target !== document.getElementById('wechatModalOverlay')) return;
-  var m = document.getElementById('wechatModalOverlay');
-  if(m) m.classList.remove('show');
-  document.body.style.overflow = '';
-}
-// ESC key to close
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') closeWechatModal();
-});
-
-function copyWechat(){
-  var t=document.createElement('textarea');
-  t.value='fccj20180520';
-  t.setAttribute('readonly','');
-  t.style.position='absolute';t.style.left='-9999px';
-  document.body.appendChild(t);
-  t.select();
-  try{document.execCommand('copy');}catch(e){}
-  document.body.removeChild(t);
-  document.querySelectorAll('.contact-copy').forEach(function(b){
-    b.textContent='已复制';
-    b.classList.add('copied');
-    setTimeout(function(){b.textContent='复制微信号';b.classList.remove('copied');},2000);
-  });
-}
-</script>
-
-<!-- ===== WeChat Contact Modal ===== -->
-<div class="wechat-modal-overlay" id="wechatModalOverlay" onclick="closeWechatModal(event)">
-  <div class="wechat-modal" onclick="event.stopPropagation()">
-    <button class="wechat-modal-close" onclick="closeWechatModal()">&times;</button>
-    <div class="wechat-modal-title">直接加我微信聊</div>
-    <div class="wechat-modal-qrcode"><img src="images/wechat-qrcode.png" alt="铭松老师微信二维码" width="180" height="180" loading="lazy"></div>
-    <div class="wechat-modal-id">微信：fccj20180520</div>
-    <button class="wechat-modal-copy" onclick="copyWechat()">📋 复制微信号</button>
-    <div class="wechat-modal-note">第一次聊聊不收费，不催你决定。<br>有些情况其实不用找老师，我先帮你判断。</div>
-  </div>
-</div>
 
 <!-- ===== Universal Clipboard Fix ===== -->
 <style>
@@ -675,12 +641,10 @@ function copyWechat(){
   }
   window.copyWxUniversal=function(){
     var wx='fccj20180520';
-    // Method 1: Modern Clipboard API
     if(navigator.clipboard&&navigator.clipboard.writeText){
       navigator.clipboard.writeText(wx).then(function(){
         showToast();
       }).catch(function(){
-        // Method 2: execCommand fallback
         tryFallback();
       });
     }else{
@@ -707,12 +671,12 @@ function copyWechat(){
       }
     }
   };
-  // Also expose as copyWechat for backward compat
   if(!window.copyWechat){window.copyWechat=window.copyWxUniversal;}
   if(!window.copyWx){window.copyWx=window.copyWxUniversal;}
   if(!window.copyWxFloat){window.copyWxFloat=window.copyWxUniversal;}
 })();
 </script>
 <!-- ===== End Universal Clipboard Fix ===== -->
+
 </body>
 </html>
